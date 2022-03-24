@@ -1,0 +1,28 @@
+
+body {
+  margin: 0;
+  height: 100%;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+html{
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+$pagination-navigation-height: 30px;
+$pagination-navigation-margin: .3rem 10px;
+$pagination-navigation-width: 30px;
+
+$pagination-more-height: 32px;
+$pagination-more-margin: .3rem;
+$pagination-more-width: 32px;
+
+$pagination-item-height: 32px;
+$pagination-item-margin: .3rem;
+$pagination-item-min-width: 32px;
+
