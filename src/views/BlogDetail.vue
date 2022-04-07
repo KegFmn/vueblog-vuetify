@@ -59,7 +59,7 @@
                   :class="{'mr-3' : $vuetify.breakpoint.xs, 'mt-4': $vuetify.breakpoint.xs}" 
                   rounded small
                   v-if="ownBlog"
-                  @click="blogDele()"
+                  @click.stop="dialog = true"
                 >
                   删除  
                   <v-icon
@@ -70,6 +70,37 @@
                     mdi-delete
                   </v-icon>
                 </v-btn>
+
+                <v-dialog
+                  v-model="dialog"
+                  max-width="450"
+                >
+                  <v-card>
+                    <v-card-title class="text-h5">
+                      确认删除博客吗?
+                    </v-card-title>
+
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+
+                      <v-btn
+                        color="blue darken-4"
+                        text
+                        @click="dialog = false"
+                      >
+                        取消
+                      </v-btn>
+
+                      <v-btn
+                        color="red darken-4"
+                        text
+                        @click="blogDele()"
+                      >
+                        删除
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-dialog>
               </v-col>
             </v-sheet>
           </v-col>
@@ -104,7 +135,8 @@
         created: '',
         content: ''
       },
-      ownBlog: false
+      ownBlog: false,
+      dialog: false
     }),
     mounted() {
       const blogId = this.$route.params.blogId
@@ -124,9 +156,9 @@
 
         const result = md.render(blog.content)
 
-        this.blog.content = result 
+        this.blog.content = result
         
-        this.ownBlog = (blog.userId === this.$store.getters.getUser.uid)
+        this.ownBlog = (blog.userId === this.$store.getters.getUser.id)
       })
     },
     methods: {
@@ -137,6 +169,7 @@
           }
         }).then(res =>{
           this.$router.push("/")
+          this.$message.success("删除成功")
         })
       }
     }

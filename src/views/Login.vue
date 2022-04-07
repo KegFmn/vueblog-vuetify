@@ -92,6 +92,7 @@
 
             //路由跳转
             this.$router.push("/")
+            this.$message.success("欢迎回来")
           })
         } else {
           console.log('error submit!!');

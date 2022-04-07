@@ -45,19 +45,19 @@ export default {
     },
     cols () {
       switch (this.$vuetify.breakpoint.name) {
-        case 'xs': return 0
-        case 'sm': return 0
-        case 'md': return 9
-        case 'lg': return 9
-        case 'xl': return 9
+        case 'xs': return 12
+        case 'sm': return 12
+        case 'md': return 8
+        case 'lg': return 8
+        case 'xl': return 8
       }
-    },
+    }
   },
   methods: {
 
   },
   mounted() {
-
+    
   }
 }
 </script>

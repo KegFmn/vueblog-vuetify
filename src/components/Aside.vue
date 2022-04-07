@@ -1,19 +1,18 @@
 <template>
-  <v-col :cols="offset" class="left-list-top d-none d-md-flex">
+  <v-col :cols="cols" :offset="offsets" class="left-list-top d-none d-md-flex">
     <v-sheet rounded="xl" width="100%">
       <v-list color="transparent" rounded>
         <v-list-item-group
-          v-model="selectedItem"
           color="primary"
         >
           <v-list-item
             link
             v-for="(type,index) in types"
             :key="index"
-            :to="{name:'Type', params: {typeId: type.tid}}"
+            :to="{name:'Type', params: {typeId: type.id}}"
           >
             <v-list-item-icon>
-              <v-icon>mdi-clock</v-icon>
+              <v-icon>mdi-bookmark-multiple</v-icon>
             </v-list-item-icon>
 
             <v-list-item-content>
@@ -37,13 +36,22 @@ export default {
     types: []
   }),
   computed: {
-    offset () {
+    cols () {
       switch (this.$vuetify.breakpoint.name) {
         case 'xs': return 0
         case 'sm': return 0
-        case 'md': return 3
-        case 'lg': return 3
-        case 'xl': return 3
+        case 'md': return 2
+        case 'lg': return 2
+        case 'xl': return 2
+      }
+    },
+    offsets() {
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs': return 0
+        case 'sm': return 0
+        case 'md': return 1
+        case 'lg': return 1
+        case 'xl': return 1
       }
     }
   },
@@ -55,7 +63,9 @@ export default {
     }
   },
   mounted() {
-    this.list();
+    if(this.$vuetify.breakpoint.name == 'md' || this.$vuetify.breakpoint.name == 'lg' || this.$vuetify.breakpoint.name == 'xl'){
+      this.list()
+    }
   }
 }
 </script>

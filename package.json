@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
+    "github-markdown-css": "^5.1.0",
     "markdown-it": "^12.3.0",
     "mavon-editor": "^2.10.4",
     "vue": "^2.6.11",

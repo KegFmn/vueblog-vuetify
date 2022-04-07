@@ -118,10 +118,10 @@
             link
             v-for="(type,index) in types"
             :key="index"
-            :to="{name:'Type', params: {typeId: type.tid}}"
+            :to="{name:'Type', params: {typeId: type.id}}"
           >
             <v-list-item-icon>
-              <v-icon>mdi-clock</v-icon>
+              <v-icon>mdi-bookmark-multiple</v-icon>
             </v-list-item-icon>
 
             <v-list-item-content>
@@ -176,7 +176,9 @@ export default {
       this.user.email = this.$store.getters.getUser.email
       this.hasLogin = true
     }
-    this.list()
+    if(this.$vuetify.breakpoint.name == 'xs' || this.$vuetify.breakpoint.name == 'sm'){
+      this.list()
+    }
   }
 }
 </script>
