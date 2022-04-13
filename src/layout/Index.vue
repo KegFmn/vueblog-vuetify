@@ -1,22 +1,18 @@
 <template>
-  <section class="index">
+  <v-app class="index">
     <Header/>
     <AppMain/>
-  </section>
+  </v-app>
 </template>
 
 <script>
-import Header from '@/components/Header'
-import AppMain from '@/components/AppMain'
+import Header from '@/components/Header/index.vue'
+import AppMain from '@/components/AppMain/index.vue'
 export default {
   name: 'Home',
-  components: {Header,AppMain},
+  components: { Header, AppMain },
   data: () => ({
-    //
-    items: [
-          { title: 'Home', icon: 'mdi-view-dashboard' },
-          { title: 'About', icon: 'mdi-forum' },
-        ],
+    
   })
 }
 </script>
