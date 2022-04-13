@@ -1,12 +1,12 @@
 import Vue from 'vue'
-import Main from './Message.vue'
+import Main from './index.vue'
 
 let MessageConstructor = Vue.extend(Main)
 
 let instance
 let instances = []
 let seed = 1
-const Message = function (options,color,icon,typeClass) {
+const Message = (options, color, icon, typeClass) =>{
   options = options || {}
   if (typeof options === 'string') {
     options = {
@@ -30,14 +30,14 @@ const Message = function (options,color,icon,typeClass) {
   return instance.vm
 }
 
-Message.success = function(option){
-	Message(option,"#67c23a","mdi-check-circle","message--success")
+Message.success = (option) =>{
+	Message(option, "#67c23a", "mdi-check-circle", "message--success")
 }
-Message.error = function(option){
-	Message(option,"#CC0033","mdi-close-circle","message--error")
+Message.error = (option) =>{
+	Message(option, "#CC0033", "mdi-close-circle", "message--error")
 }
 
-Message.close = function (id) {
+Message.close = (id) => {
   for (let i = 0, len = instances.length; i < len; i++) {
     if (id === instances[i].id) {
       instances.splice(i, 1)
@@ -46,7 +46,7 @@ Message.close = function (id) {
   }
 }
 
-Message.closeAll = function () {
+Message.closeAll = () =>{
   for (let i = instances.length - 1; i >= 0; i--) {
     instances[i].close()
   }
