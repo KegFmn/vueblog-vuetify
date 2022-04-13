@@ -1,0 +1,92 @@
+<template>
+  <v-main class="grey lighten-3 fill-height mt-2">
+    <v-container>
+      <v-row>
+        <!-- 侧边栏 -->
+        <v-col v-if="asideCols" cols="2">
+          <v-sheet rounded="xl" class="d-none d-md-flex">
+            <v-list color="transparent" width="100%" rounded>
+              <v-list-item-group
+                color="primary"
+              >
+                <v-list-item
+                  link
+                  v-for="(type,index) in types"
+                  :key="index"
+                  :to="{name:'Type', params: {typeId: type.id}}"
+                >
+                  <v-list-item-icon>
+                    <v-icon>mdi-bookmark-multiple</v-icon>
+                  </v-list-item-icon>
+
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      {{ type.typeName }}
+                    </v-list-item-title>
+                  </v-list-item-content>
+
+                </v-list-item>
+              </v-list-item-group>
+
+            </v-list>
+          </v-sheet>
+        </v-col>
+
+        <!-- 内容 -->
+        <v-col>
+          <v-sheet
+              min-height="85vh"
+              rounded="xl"
+            >
+            <v-container>
+              <router-view :key="key"/>
+            </v-container>
+          </v-sheet>
+        </v-col>
+
+      </v-row>
+    </v-container>
+  </v-main>
+</template>
+
+<script>
+export default {
+  name: 'AppMain',
+  components: { },
+  data: () => ({
+    types: []
+  }),
+  computed: {
+    key() {
+      return this.$route.path
+    },
+    asideCols() {
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs': return false
+        case 'sm': return false
+        case 'md': return false
+        case 'lg': return false
+        case 'xl': return true
+      }
+    }
+  },
+  methods: {
+    list(){
+      this.$axios.get('/types').then(res =>{
+        this.types = res.data.data
+      })
+    }
+  },
+  mounted() {
+    if(this.$vuetify.breakpoint.name == 'xl'){
+      this.list()
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.left-aside{
+  position: fixed;
+}
+</style>
