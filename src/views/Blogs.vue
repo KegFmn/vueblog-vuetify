@@ -1,9 +1,9 @@
 <template>
   <v-row>
-    <v-col cols="12">
+    <v-col cols="24">
       <!-- 循环博客卡片 -->
       <v-row v-for="(blog,index) in blogs" :key="index" align="start">
-        <v-col cols="12">
+        <v-col>
           <v-card
             link
             rounded="xl"
@@ -41,7 +41,7 @@
 
       <v-row align="end">
         <!-- 分页 -->
-        <v-col cols="12" align-self="end">
+        <v-col cols="24" align-self="end">
           <v-pagination
             circle
             v-model="currentPage"

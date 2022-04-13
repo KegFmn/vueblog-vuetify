@@ -38,7 +38,7 @@
         </v-col>
 
         <v-col :cols="contentCols">
-          <mavon-editor class="content" v-model="ruleForm.content"/>
+          <Editor v-model="ruleForm.content"/>
         </v-col>
       </v-row>
     </v-sheet>
@@ -293,11 +293,13 @@
 </template>
 
 <script>
+import Editor from '../components/MavonEditor/index.vue'
 export default {
   name: 'BlogEdit',
+  components: { Editor },
   data: () => ({
     ruleForm: {
-      id: '',
+      id: 0,
       title: '',
       description: '',
       content: '',
@@ -388,7 +390,7 @@ export default {
         typeId: isNaN(this.ruleForm.selectType) ? null : this.ruleForm.selectType,
         original: isNaN(this.ruleForm.original) ? null : this.ruleForm.original
       }
-      console.log(blog);
+      
       if(blog.title != null && blog.description != null && blog.content != null && blog.typeId != null && blog.original != null){
         this.$axios.post('/blog/edit', blog, {
           headers: {
@@ -457,11 +459,4 @@ export default {
   font-size: 18px;
   font-weight: 700;
 }
-.content{
-  min-height: 60vh;
-}
-.v-note-wrapper{
-   z-index:1 !important; 
-}
-
 </style>
