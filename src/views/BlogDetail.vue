@@ -109,12 +109,19 @@
         <!-- 博客内容 -->
         <v-row align="end">
           <v-col>
-            <v-sheet
+            <!-- <v-sheet
               class="content markdown-body pa-4"
               v-html="blog.content"
               v-highlight
             >
-            </v-sheet>
+            </v-sheet> -->
+            <mavonView v-model="blog.content"
+              :defaultOpen="editor.defaultOpenDetail"
+              :subfield="editor.subfieldDetail" 
+              :toolbarsFlag="editor.toolbarsFlagDetail"
+              :boxShadow="editor.boxShadow"
+              :previewBackground="editor.previewBackground"
+            />
           </v-col>
         </v-row>
     </v-sheet>
@@ -122,10 +129,10 @@
 </template>
 
 <script>
-import 'github-markdown-css'
+import MavonView from '../components/MavonEditor/index.vue'
 export default{
   name: 'BlogDetail',
-  components: {},
+  components: { MavonView },
   data: () =>({
     blog: {
       id: '',
@@ -136,8 +143,16 @@ export default{
       created: '',
       content: ''
     },
+    editor: {
+      defaultOpenDetail: 'preview',
+      previewBackground: '#FFFFFF',
+      subfieldDetail: false,
+      toolbarsFlagDetail: false,
+      boxShadow: false
+    },
     ownBlog: false,
-    dialog: false
+    dialog: false,
+    
   }),
   mounted() {
     const blogId = this.$route.params.blogId
@@ -147,16 +162,18 @@ export default{
       this.blog.original = blog.original
       this.blog.title = blog.title
       this.blog.created = blog.created
+      this.blog.content = blog.content
       this.blog.userName = blog.user.userName
       this.blog.typeName = blog.type.typeName
       
-      const MarkdownIt = require('markdown-it')
-      const md = new MarkdownIt()
-      const result = md.render(blog.content)
+      // const MarkdownIt = mavonEditor.markdownIt
+      // console.log(this.$markdownIt);
+      // const md = this.$markdownIt.set({ breaks: false });
+      // const result = md.render(blog.content)
 
-      this.blog.content = result
+      // this.blog.content = result
       
-      this.ownBlog = (blog.userId === this.$store.getters.getUser.id)
+      this.ownBlog = (blog.userId == this.$store.getters.getUser.id)
     })
   },
   methods: {
@@ -175,10 +192,7 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-  .text-p{
-    margin: auto;
-  }
-  .content{
-    min-height: 70vh;
-  }
+.text-p{
+  margin: auto;
+}
 </style>

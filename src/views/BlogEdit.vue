@@ -38,7 +38,12 @@
         </v-col>
 
         <v-col :cols="contentCols">
-          <Editor v-model="ruleForm.content"/>
+          <mavonEditor
+            v-model="ruleForm.content"
+            :defaultOpen="editor.defaultOpen"
+            :subfield="editor.subfield" 
+            :toolbarsFlag="editor.toolbarsFlag"
+          />
         </v-col>
       </v-row>
     </v-sheet>
@@ -293,10 +298,10 @@
 </template>
 
 <script>
-import Editor from '../components/MavonEditor/index.vue'
+import mavonEditor from '../components/MavonEditor/index.vue'
 export default {
   name: 'BlogEdit',
-  components: { Editor },
+  components: { mavonEditor },
   data: () => ({
     ruleForm: {
       id: 0,
@@ -305,6 +310,11 @@ export default {
       content: '',
       selectType: {},
       original: null
+    },
+    editor: {
+      defaultOpen: null,
+      subfield: true,
+      toolbarsFlag: true
     },
     types: [],
     type:{
