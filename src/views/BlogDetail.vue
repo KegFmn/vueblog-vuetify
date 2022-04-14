@@ -195,4 +195,7 @@ export default{
 .text-p{
   margin: auto;
 }
+.v-note-wrapper{
+  border: none;
+}
 </style>
