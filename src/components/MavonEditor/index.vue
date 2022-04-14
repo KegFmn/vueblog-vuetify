@@ -2,12 +2,12 @@
     <mavon-editor
       :placeholder="'开始创作···'"
       :toolbars="toolbars"
+      :external-link="externalLink"
       :codeStyle="codeStyle"
       :boxShadow="boxShadowView"
       :defaultOpen="defaultView"
       :subfield="subfieldView"
       :toolbarsFlag="toolbarsFlagView"
-      :external-link="externalLink"
       :previewBackground="previewBackgroundView"
       @change="change"
       @imgAdd="imgAdd"
