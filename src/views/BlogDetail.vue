@@ -25,7 +25,7 @@
                         {{blog.original == 0 ? '原创' : '转载'}}
                       </v-btn>
                       <p class="mb-0 font-weight-bold text-xs-h4 mr-8 ml-5 text-p text-no-wrap">{{blog.userName}}</p>
-                      <p class="mb-0 ml-0 font-weight-regular text-xs-h6 text-p text-no-wrap text-truncate">{{blog.created}}</p>
+                      <p class="mb-0 ml-0 font-weight-regular text-xs-h6 text-p text-no-wrap text-truncate">{{blog.updated}}</p>
                     </v-col>
                   </v-row>
 
@@ -115,7 +115,8 @@
               v-highlight
             >
             </v-sheet> -->
-            <mavonView v-model="blog.content"
+            <mavonView
+              v-model="blog.content"
               :defaultOpen="editor.defaultOpenDetail"
               :subfield="editor.subfieldDetail" 
               :toolbarsFlag="editor.toolbarsFlagDetail"
@@ -141,6 +142,7 @@ export default{
       userName: '',
       typeName:'',
       created: '',
+      updated:'',
       content: ''
     },
     editor: {
@@ -155,28 +157,32 @@ export default{
     
   }),
   mounted() {
-    const blogId = this.$route.params.blogId
-    this.$axios.get('/blog/' + blogId).then(res =>{
-      const blog = res.data.data
-      this.blog.id = blog.id
-      this.blog.original = blog.original
-      this.blog.title = blog.title
-      this.blog.created = blog.created
-      this.blog.content = blog.content
-      this.blog.userName = blog.user.userName
-      this.blog.typeName = blog.type.typeName
-      
-      // const MarkdownIt = mavonEditor.markdownIt
-      // console.log(this.$markdownIt);
-      // const md = this.$markdownIt.set({ breaks: false });
-      // const result = md.render(blog.content)
-
-      // this.blog.content = result
-      
-      this.ownBlog = (blog.userId == this.$store.getters.getUser.id)
-    })
+    this.getBlog()
   },
   methods: {
+    getBlog() {
+      const blogId = this.$route.params.blogId
+      this.$axios.get('/blog/' + blogId).then(res =>{
+        const blog = res.data.data
+        this.blog.id = blog.id
+        this.blog.original = blog.original
+        this.blog.title = blog.title
+        this.blog.created = blog.created
+        this.blog.updated = blog.updated
+        this.blog.content = blog.content
+        this.blog.userName = blog.user.userName
+        this.blog.typeName = blog.type.typeName
+        
+        // const MarkdownIt = mavonEditor.markdownIt
+        // console.log(this.$markdownIt);
+        // const md = this.$markdownIt.set({ breaks: false });
+        // const result = md.render(blog.content)
+
+        // this.blog.content = result
+        
+        this.ownBlog = (blog.userId == this.$store.getters.getUser.id)
+      })
+    },
     blogDele() {
       this.$axios.post('/blog/delete', this.blog, {
         headers: {
@@ -197,5 +203,8 @@ export default{
 }
 .v-note-wrapper{
   border: none;
+  ::v-deep .v-note-panel .v-note-show .v-show-content{
+    padding: 8px 15px 10px 15px;
+  }
 }
 </style>

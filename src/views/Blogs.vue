@@ -15,7 +15,7 @@
             </v-card-title>
 
             <v-card-subtitle>
-              {{blog.created}}
+              {{blog.updated}}
             </v-card-subtitle>
 
             <v-card-text>
