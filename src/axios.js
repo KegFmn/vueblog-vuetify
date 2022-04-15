@@ -3,7 +3,7 @@ import store from './store'
 import router from './router'
 import Message from './components/Message/index.js'
 // "http://101.33.227.28:8081"
-axios.defaults.baseURL="http://localhost:8081"
+axios.defaults.baseURL="http://101.33.227.28:8081"
 
 //前置拦截
 axios.interceptors.request.use(config =>{
@@ -18,7 +18,7 @@ axios.interceptors.response.use(response =>{
   if(res.code === 200){
     return response
   }else{
-    Message.error('错了哦，这是一条错误的消息')
+    Message.error(response.data.msg)
     return Promise.reject(response.data.msg)
   }
 },
