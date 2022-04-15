@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     token: localStorage.getItem("token"),
-    userInfo: JSON.parse(sessionStorage.getItem('userInfo'))
+    userInfo: JSON.parse(sessionStorage.getItem('userInfo')),
+    blogType: []
   },
   mutations: {
     //set
@@ -17,6 +18,9 @@ export default new Vuex.Store({
     SET_USERINFO: (state, userInfo) => {
       state.userInfo = userInfo
       sessionStorage.setItem("userInfo",JSON.stringify(userInfo))
+    },
+    SET_BLOGTYPE: (state, blogType) => {
+      state.blogType = blogType
     },
     REMOVE_INFO: (state) => {
       state.token = ''
@@ -29,6 +33,9 @@ export default new Vuex.Store({
     //get
     getUser: state => {
       return state.userInfo
+    },
+    getBlogType: state => {
+      return state.blogType
     }
   },
   actions: {

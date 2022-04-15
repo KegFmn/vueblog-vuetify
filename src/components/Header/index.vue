@@ -127,6 +127,11 @@
 export default {
   name: 'Header',
   components: {},
+  computed: {
+    types() {
+      return this.$store.getters.getBlogType
+    }
+  },
   data: () => ({
     user:{
       userName: '请先登录',
@@ -136,7 +141,6 @@ export default {
     hasLogin: false,
     drawer: false,
     group: null,
-    types: [],
   }),
   methods: {
     logout() {
@@ -151,7 +155,8 @@ export default {
     },
     list() {
       this.$axios.get('/types').then(res =>{
-          this.types = res.data.data
+        const blogType = res.data.data
+        this.$store.commit('SET_BLOGTYPE', blogType)
       })
     }
   },
@@ -162,11 +167,7 @@ export default {
       this.user.email = this.$store.getters.getUser.email
       this.hasLogin = true
     }
-    if(this.$vuetify.breakpoint.name == 'xs' || this.$vuetify.breakpoint.name == 'sm' 
-        || this.$vuetify.breakpoint.name == 'md' || this.$vuetify.breakpoint.name == 'lg')
-    {
-      this.list()
-    }
+    this.list()
   }
 }
 </script>

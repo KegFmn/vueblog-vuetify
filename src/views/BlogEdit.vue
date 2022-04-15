@@ -210,20 +210,20 @@
                   color="primary"
                 >
                   <v-list-item
-                    v-for="(type, index) in types"
+                    v-for="(item, index) in types"
                     :key="index"
                   >
                     <v-list-item-icon>
                       <v-icon>mdi-bookmark-multiple</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
-                      <v-list-item-title v-text="type.typeName"></v-list-item-title>
+                      <v-list-item-title v-text="item.typeName"></v-list-item-title>
                     </v-list-item-content>
                     <v-list-item-action>
-                    <v-btn icon @click="assignment(type)">
-                      <v-icon>mdi-arrow-top-left</v-icon>
-                    </v-btn>
-                  </v-list-item-action>
+                      <v-btn icon @click="assignment(item, $event)">
+                        <v-icon>mdi-arrow-top-left</v-icon>
+                      </v-btn>
+                    </v-list-item-action>
                   </v-list-item>
                 </v-list-item-group>
               </v-list>
@@ -316,7 +316,6 @@ export default {
       subfield: true,
       toolbarsFlag: true
     },
-    types: [],
     type:{
       id: null,
       typeName: null
@@ -342,6 +341,9 @@ export default {
     selectedItem: null
   }),
   computed: {
+    types() {
+      return this.$store.getters.getBlogType
+    },
     titleCols() {
       switch(this.$vuetify.breakpoint.name){
         case 'xs': return 10
@@ -387,7 +389,8 @@ export default {
     },
     getType() {
       this.$axios.get('/types').then(res =>{
-        this.types = res.data.data
+        const blogType = res.data.data
+        this.$store.commit('SET_BLOGTYPE', blogType)
       })
     },
     saveBlog() {
@@ -425,15 +428,15 @@ export default {
           this.getType()
           this.type.id = null
           this.type.typeName = null
-          this.$message.success("增加成功")
+          this.$message.success("操作成功")
         })
       }else {
         this.$message.error("请填写类型名称")
       }
     },
-    assignment(type){
-      this.type.id = type.id
-      this.type.typeName = type.typeName
+    assignment(item, event){
+      this.type.id = item.id
+      this.type.typeName = item.typeName
     },
     onClickOutside(){
       this.selectedItem = null
@@ -457,7 +460,6 @@ export default {
   },
   mounted() {
     this.getBlog()
-    this.getType()
   }
 }
 </script>

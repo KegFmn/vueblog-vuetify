@@ -59,11 +59,14 @@ export default {
   name: 'AppMain',
   components: { },
   data: () => ({
-    types: []
+    
   }),
   computed: {
     key() {
       return this.$route.path
+    },
+    types() {
+      return this.$store.getters.getBlogType
     },
     asideCols () {
       switch (this.$vuetify.breakpoint.name) {
@@ -103,16 +106,10 @@ export default {
     },
   },
   methods: {
-    list(){
-      this.$axios.get('/types').then(res =>{
-        this.types = res.data.data
-      })
-    }
+
   },
   mounted() {
-    if(this.$vuetify.breakpoint.name == 'xl'){
-      this.list()
-    }
+
   }
 }
 </script>
