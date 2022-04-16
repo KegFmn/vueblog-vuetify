@@ -24,6 +24,7 @@ export default new Vuex.Store({
     },
     REMOVE_INFO: (state) => {
       state.token = ''
+      state.blogType = []
       state.userInfo = {}
       localStorage.setItem('token', '')
       sessionStorage.setItem('userInfo', JSON.stringify(''))
