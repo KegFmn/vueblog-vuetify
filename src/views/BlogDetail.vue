@@ -7,7 +7,7 @@
         <!-- 标题 -->
         <v-row align="start">
           <v-col cols="12">
-            <p class="mb-0 ml-4 font-weight-black text-lg-h4">{{blog.title}}</p>
+            <p class="mb-0 ml-4 font-weight-black text-h4">{{blog.title}}</p>
           </v-col>
         </v-row>
         
@@ -16,92 +16,90 @@
           <v-col cols="12">
             <v-sheet
               rounded="xl"
-              class="grey lighten-5 d-flex"
+              class="grey lighten-5 pl-5 mt-3"
             >
-              <v-col cols="7">
-                  <v-row class="pl-2">
-                    <v-col cols="12" class="d-flex flex-nowrap">
-                      <v-btn small text rounded :class="{'mr-2' : true, 'orange lighten-2' : blog.original == 0, 'green lighten-2' : !blog.original == 0}">
-                        {{blog.original == 0 ? '原创' : '转载'}}
-                      </v-btn>
-                      <p class="mb-0 font-weight-bold text-xs-h4 mr-8 ml-5 text-p text-no-wrap">{{blog.userName}}</p>
-                      <p class="mb-0 ml-0 font-weight-regular text-xs-h6 text-p text-no-wrap text-truncate">{{blog.updated}}</p>
-                    </v-col>
-                  </v-row>
+              <v-row>
+                <v-col cols="5" class="d-flex">
 
-                  <v-row class="pl-2">
-                    <v-col cols="12">
-                      <p class="mb-0 font-weight-medium text-xs-h4 text-p text-no-wrap">
-                        文章专栏：{{blog.typeName}}
-                      </p>
-                    </v-col>
-                  </v-row>
-              </v-col>
+                  <v-btn small text rounded :class="{'orange lighten-2' : blog.original == 0, 'green lighten-2' : !blog.original == 0}">
+                    {{blog.original == 0 ? '原创' : '转载'}}
+                  </v-btn>
 
-              <v-col align-self="center" cols="5" class="d-flex justify-end flex-wrap">
-                <v-btn 
-                  link
-                  class="mr-3" 
-                  rounded small
-                  v-if="ownBlog"
-                  :to="{name: 'BlogEdit', params: {blogId: blog.id}}"
-                >
-                  编辑
-                  <v-icon
-                    right
+                  <p class="font-weight-bold text-no-wrap mb-0 ml-6 my-text">{{blog.userName}}</p>
+
+                  <p class="font-weight-regular text-no-wrap text-truncate mb-0 ml-6 my-text">{{blog.updated}}</p>
+                  
+                </v-col>
+
+                <v-col class="ml-auto d-flex justify-end" v-if="ownBlog">
+                  <v-btn 
+                    link
                     text
-                    outlined
+                    plain
+                    small
+                    rounded
+                    color="black"
+                    class="px-0 pt-1"
+                    :to="{name: 'BlogEdit', params: {blogId: blog.id}}"
                   >
-                    mdi-pencil
-                  </v-icon>
-                </v-btn>
-                <v-btn
-                  :class="{'mr-3' : $vuetify.breakpoint.xs, 'mt-4': $vuetify.breakpoint.xs}" 
-                  rounded small
-                  v-if="ownBlog"
-                  @click.stop="dialog = true"
-                >
-                  删除  
-                  <v-icon
-                    right
+                    <span class="font-weight-black text-subtitle-2">编辑</span>
+                  </v-btn>
+
+                  <span class="font-weight-light my-text">|</span>
+
+                  <v-btn
                     text
-                    outlined
+                    plain
+                    small
+                    rounded
+                    color="red darken-4"
+                    @click.stop="dialog = true"
+                    class="px-0 pt-1 mr-2"
                   >
-                    mdi-delete
-                  </v-icon>
-                </v-btn>
+                    <span class="font-weight-black text-subtitle-2">删除</span>
+                  </v-btn>
+                  <!-- 删除弹出框 -->
+                  <v-dialog
+                    v-model="dialog"
+                    max-width="450"
+                  >
+                    <v-card>
+                      <v-card-title class="text-h5">
+                        确认删除博客吗?
+                      </v-card-title>
 
-                <v-dialog
-                  v-model="dialog"
-                  max-width="450"
-                >
-                  <v-card>
-                    <v-card-title class="text-h5">
-                      确认删除博客吗?
-                    </v-card-title>
+                      <v-card-actions>
+                        <v-spacer></v-spacer>
 
-                    <v-card-actions>
-                      <v-spacer></v-spacer>
+                        <v-btn
+                          color="blue darken-4"
+                          text
+                          @click="dialog = false"
+                        >
+                          取消
+                        </v-btn>
 
-                      <v-btn
-                        color="blue darken-4"
-                        text
-                        @click="dialog = false"
-                      >
-                        取消
-                      </v-btn>
+                        <v-btn
+                          color="red darken-4"
+                          text
+                          @click="blogDele()"
+                        >
+                          删除
+                        </v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-dialog>
+                </v-col>
+              </v-row>
 
-                      <v-btn
-                        color="red darken-4"
-                        text
-                        @click="blogDele()"
-                      >
-                        删除
-                      </v-btn>
-                    </v-card-actions>
-                  </v-card>
-                </v-dialog>
-              </v-col>
+              <v-row>
+                <v-col cols="12">
+                  <p class="font-weight-medium text-body-1 text-no-wrap mb-0">
+                    文章专栏：{{blog.typeName}}
+                  </p>
+                </v-col>
+              </v-row>
+
             </v-sheet>
           </v-col>
         </v-row>
@@ -198,8 +196,8 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-.text-p{
-  margin: auto;
+.my-text{
+  line-height: 30px;
 }
 .v-note-wrapper{
   border: none;
