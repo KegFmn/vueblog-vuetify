@@ -52,13 +52,16 @@
         </v-col>
       </v-row>
     </v-col>
+
+    <Dial></Dial>
   </v-row>
 </template>
 
 <script>
-
+import Dial from '../components/Dial/index.vue'
 export default {
   name: 'Blogs',
+  components: { Dial },
   data: () => ({
     blogs: {},
     reverse: false,
