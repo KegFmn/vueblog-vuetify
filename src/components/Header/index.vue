@@ -97,13 +97,14 @@
       </v-menu>
     </v-app-bar>
 
-    <!-- 左边导航抽屉 -->
+    <!-- 左边手机导航抽屉 -->
     <v-navigation-drawer
       app
       width="180"
       temporary
       v-model="drawer"
     >
+      <!-- 头像 -->
       <v-list>
         <v-list-item class="d-flex justify-center">
           <v-list-item-avatar>
@@ -125,9 +126,61 @@
 
       <v-divider></v-divider>
 
+      <!-- 网站监控 -->
+      <v-list shaped disabled>
+        <v-list-item-group
+          color="primary"
+        >
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon>mdi-account-multiple</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>
+                访客
+              </v-list-item-title>
+            </v-list-item-content>
+
+            <span class="font-weight-medium text-no-wrap">{{ monitor.visitTotal }}</span>
+          </v-list-item>
+
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon>mdi-post-outline</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>
+                博客
+              </v-list-item-title>
+            </v-list-item-content>
+
+            <span class="font-weight-medium text-no-wrap">{{ monitor.blogTotal }}</span>
+          </v-list-item>
+
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon>mdi-bulletin-board</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>
+                留言
+              </v-list-item-title>
+            </v-list-item-content>
+
+            <span class="font-weight-medium text-no-wrap">{{ monitor.blessTotal }}</span>
+          </v-list-item>
+        </v-list-item-group>
+
+      </v-list>
+
+      <v-divider></v-divider>
+
+      <!-- 手机导航 -->
       <v-list shaped>
         <v-list-item-group
-          v-model="group"
           active-class="deep-purple--text text--accent-4"
         >
           <v-list-item
@@ -180,6 +233,11 @@
 export default {
   name: 'Header',
   components: {},
+  computed: {
+    monitor() {
+      return this.$store.getters.getMonitor
+    },
+  },
   data: () => ({
     user:{
       userName: '请先登录',
@@ -188,13 +246,12 @@ export default {
     },
     navigations: [
       {to: '/', icon: 'mdi-home-variant', name: '主页'},
-      {to: '', icon: 'mdi-vector-link', name: '友链'},
-      {to: '', icon: 'mdi-calendar-text', name: '留言板'},
+      {to: '', icon: 'mdi-link-variant-plus', name: '友链'},
+      {to: '/Guestbook', icon: 'mdi-calendar-text', name: '留言板'},
       {to: '/blog/add', icon: 'mdi-pencil', name: '发表博客'},
     ],
     hasLogin: false,
     drawer: false,
-    group: null,
   }),
   methods: {
     logout() {

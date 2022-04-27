@@ -187,10 +187,30 @@ export default{
           "Authorization": localStorage.getItem("token")
         }
       }).then(res =>{
+        this.getMonitor()
         this.$router.push("/")
         this.$message.success("删除成功")
       })
-    }
+    },
+    async getMonitor() {
+      this.$axios.get('/monitor').then(res =>{
+        const monitorData = res.data.data
+        const monitor = [
+          {name : '访客', icon: 'mdi-account-multiple', number: 0},
+          {name : '博客', icon: 'mdi-post-outline', number: 0}
+        ]
+        monitor.forEach(item =>{
+          if(item.name == '访客') {
+            item.number = monitorData.visitTotal
+          } else if(item.name == '博客') {
+            item.number = monitorData.blogTotal
+          } else if(item.name == '留言') {
+            item.number = monitorData.blessTotal
+          }
+        })
+        this.$store.commit('SET_MONITOR', monitor)
+      })
+    },
   }
 }
 </script>

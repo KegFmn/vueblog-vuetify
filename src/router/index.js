@@ -17,13 +17,11 @@ const routes = [
         name: 'Blogs',
         component: () => import('@/views/Blogs.vue'),
       },
-
       {
         path: '/type/:typeId',
         name: 'Type',
         component: () => import('@/views/Blogs.vue'),
       },
-
       {
         path: '/blog/add',
         name: 'BlogAdd',
@@ -32,13 +30,6 @@ const routes = [
           requireAuth: true
         }
       },
-
-      {
-        path: '/blog/:blogId',
-        name: 'BlogDetail',
-        component: () => import('@/views/BlogDetail.vue')
-      },
-      
       {
         path: '/blog/:blogId/edit',
         name: 'BlogEdit',
@@ -46,7 +37,22 @@ const routes = [
         meta: {//是否需要权限
           requireAuth: true
         }
-      }
+      },
+      {
+        path: '/blog/:blogId',
+        name: 'BlogDetail',
+        component: () => import('@/views/BlogDetail.vue')
+      },
+      {
+        path: '/blog/:blogId',
+        name: 'BlogDetail',
+        component: () => import('@/views/BlogDetail.vue')
+      },
+      {
+        path: '/Guestbook',
+        name: 'Guestbook',
+        component: () => import('@/views/Guestbook.vue')
+      },
     ]
   },
   {

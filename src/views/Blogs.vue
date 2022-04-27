@@ -64,7 +64,6 @@ export default {
   components: { Dial },
   data: () => ({
     blogs: {},
-    reverse: false,
     currentPage: 1,
     length: 0,
     total: 0,

@@ -145,7 +145,7 @@ export default {
   },
 
   mounted() {
-
+    
   },
 
   methods: {
@@ -157,7 +157,7 @@ export default {
     },
     change (value, render) {
       this.html = render
-    },
+    }
   },
 };
 </script>

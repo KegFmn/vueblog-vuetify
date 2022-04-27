@@ -7,7 +7,8 @@ export default new Vuex.Store({
   state: {
     token: localStorage.getItem("token"),
     userInfo: JSON.parse(sessionStorage.getItem('userInfo')),
-    blogType: []
+    blogType: [],
+    monitor: {}
   },
   mutations: {
     //set
@@ -22,9 +23,13 @@ export default new Vuex.Store({
     SET_BLOGTYPE: (state, blogType) => {
       state.blogType = blogType
     },
+    SET_MONITOR: (state, monitor) => {
+      state.monitor = monitor
+    },
     REMOVE_INFO: (state) => {
       state.token = ''
       state.blogType = []
+      state.monitor = []
       state.userInfo = {}
       localStorage.setItem('token', '')
       sessionStorage.setItem('userInfo', JSON.stringify(''))
@@ -37,10 +42,11 @@ export default new Vuex.Store({
     },
     getBlogType: state => {
       return state.blogType
+    },
+    getMonitor: state => {
+      return state.monitor
     }
   },
-  actions: {
-  },
-  modules: {
-  }
+  actions: {},
+  modules: {}
 })

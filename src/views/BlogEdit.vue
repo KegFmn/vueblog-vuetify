@@ -410,6 +410,10 @@ export default {
             "Authorization": localStorage.getItem("token")
           }
         }).then(res =>{
+          if(blog.id == null) {
+            console.log('新增');
+            this.getMonitor()
+          }
           this.$router.push("/")
           this.$message.success("发表成功")
         })
@@ -456,7 +460,13 @@ export default {
         this.type.typeName = null
         this.$message.success("删除成功")
       })
-    }
+    },
+    async getMonitor() {
+      this.$axios.get('/monitor').then(res =>{
+        const monitorData = res.data.data
+        this.$store.commit('SET_MONITOR', monitorData)
+      })
+    },
   },
   mounted() {
     this.getBlog()

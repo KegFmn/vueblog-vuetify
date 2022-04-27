@@ -5,9 +5,63 @@
         
         <v-spacer></v-spacer>
 
-        <!-- 侧边栏 -->
         <v-col :cols="asideCols" class="left-aside d-none d-lg-flex">
           <v-row>
+            <!-- 网站监控 -->
+            <v-col cols="24">
+              <v-sheet rounded="xl" width="100%">
+                <v-list color="transparent" rounded disabled>
+                  <v-list-item-group
+                    color="primary"
+                  >
+                    <v-list-item link>
+                      <v-list-item-icon>
+                        <v-icon>mdi-account-multiple</v-icon>
+                      </v-list-item-icon>
+
+                      <v-list-item-content>
+                        <v-list-item-title>
+                          访客
+                        </v-list-item-title>
+                      </v-list-item-content>
+
+                      <span class="font-weight-medium text-no-wrap">{{ monitor.visitTotal }}</span>
+                    </v-list-item>
+                    
+                    <v-list-item link>
+                      <v-list-item-icon>
+                        <v-icon>mdi-post-outline</v-icon>
+                      </v-list-item-icon>
+
+                      <v-list-item-content>
+                        <v-list-item-title>
+                          博客
+                        </v-list-item-title>
+                      </v-list-item-content>
+
+                      <span class="font-weight-medium text-no-wrap">{{ monitor.blogTotal }}</span>
+                    </v-list-item>
+
+                    <v-list-item link>
+                      <v-list-item-icon>
+                        <v-icon>mdi-bulletin-board</v-icon>
+                      </v-list-item-icon>
+
+                      <v-list-item-content>
+                        <v-list-item-title>
+                          留言
+                        </v-list-item-title>
+                      </v-list-item-content>
+
+                      <span class="font-weight-medium text-no-wrap">{{ monitor.blessTotal }}</span>
+                    </v-list-item>
+                  </v-list-item-group>
+
+                </v-list>
+              </v-sheet>
+            </v-col>
+
+            <!-- 侧边栏 -->
             <v-col cols="24">
               <v-sheet rounded="xl" width="100%">
                 <v-list color="transparent" rounded>
@@ -72,6 +126,9 @@ export default {
     types() {
       return this.$store.getters.getBlogType
     },
+    monitor() {
+      return this.$store.getters.getMonitor
+    },
     asideCols () {
       switch (this.$vuetify.breakpoint.name) {
         case 'xs': return 0
@@ -100,16 +157,18 @@ export default {
       }
     },
   },
+
   methods: {
-    list() {
-      this.$axios.get('/types').then(res =>{
-        const blogType = res.data.data
-        this.$store.commit('SET_BLOGTYPE', blogType)
+    getMonitor() {
+      this.$axios.get('/monitor').then(res =>{
+        const monitorData = res.data.data
+        this.$store.commit('SET_MONITOR', monitorData)
       })
-    }
+    },
   },
+
   mounted() {
-    this.list()
+    this.getMonitor()
   }
 }
 </script>
