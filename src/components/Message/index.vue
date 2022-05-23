@@ -24,7 +24,7 @@
 		data() {
 			return {
 				visible: false,
-				duration: 3000,
+				duration: 2000,
 				message: '',
 				timer: null,
 				closed: false,

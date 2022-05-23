@@ -8,10 +8,12 @@
             link
             rounded="xl"
             class="elevation-2"
-            :to="{name:'BlogDetail', params: {blogId: blog.id}}"
+            
           >
             <v-card-title class="text-h5">
-              {{blog.title}}
+              <router-link class="blogTile" :to="{name:'BlogDetail', params: {blogId: blog.id}}">
+               {{blog.title}}
+              </router-link>
             </v-card-title>
 
             <v-card-subtitle>
@@ -23,16 +25,15 @@
             </v-card-text>
 
             <v-card-actions>
-              <v-btn icon>
+              <v-btn icon @click="giveLike">
                 <v-icon>mdi-heart</v-icon>
               </v-btn>
-              <v-btn icon>
+              <!-- <v-btn icon>
                 <v-icon>mdi-bookmark</v-icon>
-              </v-btn>
-              <v-btn icon>
+              </v-btn> -->
+              <v-btn icon @click="copyLink(blog.id)">
                 <v-icon>mdi-share-variant</v-icon>
               </v-btn>
-
               <v-spacer></v-spacer>
             </v-card-actions>
           </v-card>
@@ -96,6 +97,17 @@ export default {
         this.pageSize = res.data.data.size
         this.length = Math.ceil(this.total/this.pageSize)
       })
+    },
+    giveLike() {
+      this.$message.success("谢谢你的点赞")
+    },
+    copyLink(val) {
+      const url = window.PLATFROM_CONFIG.baseURL + '/#/blog/' + val
+      this.$copyText(url).then(() => {
+        this.$message.success("复制成功，快去分享给别人吧")
+      }).catch(err => {
+        this.$message.error("复制失败")
+      })
     }
   },
   mounted() {
@@ -105,5 +117,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.blogTile {
+  color: #000;
+  text-decoration: none; //去掉原有链接文字下划线
+}
+.blogTile:hover{
+  font-weight: 500;
+  text-decoration:underline;
+}
 </style>

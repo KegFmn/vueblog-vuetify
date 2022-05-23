@@ -31,9 +31,11 @@ const Message = (options, color, icon, typeClass) =>{
 }
 
 Message.success = (option) =>{
-	Message(option, "#67c23a", "mdi-check-circle", "message--success")
+  Message.closeAll()
+  Message(option, "#67c23a", "mdi-check-circle", "message--success")
 }
 Message.error = (option) =>{
+  Message.closeAll()
 	Message(option, "#CC0033", "mdi-close-circle", "message--error")
 }
 
