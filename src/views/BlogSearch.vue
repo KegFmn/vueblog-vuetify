@@ -25,7 +25,7 @@
                 {{blog.description}}
             </v-card-text>
 
-            <v-card-actions class="pt-1">
+            <v-card-actions>
               <v-btn icon @click="giveLike">
                 <v-icon>mdi-heart</v-icon>
               </v-btn>
@@ -88,15 +88,16 @@ export default {
       const params = {
         currentPage: this.currentPage,
         pageSize: this.pageSize,
-        typeId: this.$route.params.typeId ? this.$route.params.typeId : 0
+        q: this.$route.params.keyword
       }
 
-      this.$axios.get('/blogs', {params} ).then(res =>{
-        this.blogs = res.data.data.records
-        this.currentPage = res.data.data.current
-        this.total = res.data.data.total
-        this.pageSize = res.data.data.size
+      this.$axios.get('/search', {params} ).then(res =>{
+        this.blogs = res.data.data.content
+        this.currentPage = res.data.data.pageable.pageNumber
+        this.pageSize = res.data.data.pageable.pageSize
+        this.total = res.data.data.number
         this.length = Math.ceil(this.total/this.pageSize)
+        console.log(res.data.data);
       })
     },
     giveLike() {
@@ -106,7 +107,7 @@ export default {
       this.$message.success("谢谢你的收藏")
     },
     copyLink(val) {
-      const url = 'https://www.specialnn.top/#/blog/' + val
+      const url = window.PLATFROM_CONFIG.baseURL + '/#/blog/' + val
       this.$copyText(url).then(() => {
         this.$message.success("复制成功，快去分享给别人吧")
       }).catch(err => {

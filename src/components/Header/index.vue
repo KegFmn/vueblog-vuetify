@@ -12,9 +12,28 @@
         class="d-md-flex d-lg-none"
       ></v-app-bar-nav-icon>
 
-      <v-toolbar-title class="mb-0 font-weight-black text-lg-h5">MyBlog</v-toolbar-title>
+      <v-toolbar-title class="mb-0 font-weight-black text-lg-h5 d-none d-lg-flex justify-end">MyBlog</v-toolbar-title>
 
       <v-spacer></v-spacer>
+
+      <v-responsive max-width="600">
+        <v-text-field
+          dense
+          flat
+          counter
+          rounded
+          clearable
+          hide-details
+          solo-inverted
+          v-model="keyword"
+          append-icon="mdi-magnify"
+          clear-icon="mdi-close-circle"
+          @change="enter"
+          @input="input"
+          @click:append="clickIcon"
+          @click:clear="clearKeyword"
+        ></v-text-field>
+      </v-responsive>
 
       <v-row class="d-none d-lg-flex justify-end">
         <v-btn 
@@ -247,11 +266,12 @@ export default {
     navigations: [
       {to: '/', icon: 'mdi-home-variant', name: '主页'},
       {to: '', icon: 'mdi-link-variant-plus', name: '友链'},
-      {to: '/Guestbook', icon: 'mdi-calendar-text', name: '留言板'},
+      {to: '/blogGuest', icon: 'mdi-calendar-text', name: '留言板'},
       {to: '/blog/add', icon: 'mdi-pencil', name: '发表博客'},
     ],
     hasLogin: false,
     drawer: false,
+    keyword: ''
   }),
   methods: {
     logout() {
@@ -263,6 +283,25 @@ export default {
         this.$store.commit("REMOVE_INFO")
         this.$router.push("/login")
       })
+    },
+    clickIcon() {
+      console.log('点击');
+      if(this.keyword != ''){
+        this.$router.push({name:'Search',params: {keyword: this.keyword}})
+      }
+    },
+    enter() {
+      console.log('键盘');
+      if(this.keyword != ''){
+        this.$router.push({name:'Search',params: {keyword: this.keyword}})
+      }
+    },
+    input() {
+      console.log('输入');
+    },
+    clearKeyword () {
+      console.log('清除');
+      this.keyword = ''
     }
   },
   mounted() {

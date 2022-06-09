@@ -11,6 +11,21 @@ module.exports = {
   // 关闭eslint
   lintOnSave: false,
 
+  devServer: {
+    proxy: {
+      '/api': {
+        target: process.env.VUE_APP_BASE_API,
+        secure: true, // 如果是https接口，需要配置这个参数
+        changeOrigin: true, //支持跨域
+        ws: true, //是否代理websockets
+        pathRewrite: {
+          // 路径重写
+          '/api': '' // 用'/api'代替target里面的地址
+        }
+      }
+    }
+  },
+
   chainWebpack: config => {
     config
       .plugin('html')

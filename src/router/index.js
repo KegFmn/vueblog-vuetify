@@ -23,6 +23,11 @@ const routes = [
         component: () => import('@/views/Blogs.vue'),
       },
       {
+        path: '/search/:keyword',
+        name: 'Search',
+        component: () => import('@/views/BlogSearch.vue'),
+      },
+      {
         path: '/blog/add',
         name: 'BlogAdd',
         component: () => import('@/views/BlogEdit.vue'),
@@ -49,9 +54,9 @@ const routes = [
         component: () => import('@/views/BlogDetail.vue')
       },
       {
-        path: '/Guestbook',
-        name: 'Guestbook',
-        component: () => import('@/views/Guestbook.vue')
+        path: '/blogGuest',
+        name: 'BlogGuest',
+        component: () => import('@/views/BlogGuest.vue')
       },
     ]
   },

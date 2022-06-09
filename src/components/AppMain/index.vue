@@ -1,5 +1,5 @@
 <template>
-  <v-main class="grey lighten-3 fill-height mt-2">
+  <v-main class="grey lighten-4 mt-2">
     <v-container fluid>
       <v-row no-gutters>
         

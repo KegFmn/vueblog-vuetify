@@ -25,9 +25,9 @@
                     {{blog.original == 0 ? '原创' : '转载'}}
                   </v-btn>
 
-                  <p class="font-weight-bold text-no-wrap mb-0 ml-6 my-text">{{blog.userName}}</p>
+                  <p class="font-weight-bold text-no-wrap mb-0 ml-6 my-text-1">{{blog.userName}}</p>
 
-                  <p class="font-weight-regular text-no-wrap text-truncate mb-0 ml-6 my-text">{{blog.updated}}</p>
+                  <p class="font-weight-regular text-no-wrap text-truncate mb-0 ml-6 my-text-1">{{blog.updated}}</p>
                   
                 </v-col>
 
@@ -45,7 +45,7 @@
                     <span class="font-weight-black text-subtitle-2">编辑</span>
                   </v-btn>
 
-                  <span class="font-weight-light my-text">|</span>
+                  <span class="font-weight-light my-text-1">|</span>
 
                   <v-btn
                     text
@@ -92,11 +92,22 @@
                 </v-col>
               </v-row>
 
-              <v-row>
-                <v-col cols="12">
-                  <p class="font-weight-medium text-body-1 text-no-wrap mb-0">
+              <v-row class="mt-0">
+                <v-col cols="6">
+                  <p class="font-weight-medium text-body-1 text-no-wrap mb-0 my-text-2">
                     文章专栏：{{blog.typeName}}
                   </p>
+                </v-col>
+                <v-col cols="6" class="ml-auto d-flex justify-end">
+                  <v-btn icon @click="giveLike">
+                    <v-icon>mdi-heart</v-icon>
+                  </v-btn>
+                  <v-btn icon @click="collection">
+                    <v-icon>mdi-bookmark</v-icon>
+                  </v-btn>
+                  <v-btn icon class="mr-2" @click="copyLink(blog.id)">
+                    <v-icon>mdi-share-variant</v-icon>
+                  </v-btn>
                 </v-col>
               </v-row>
 
@@ -181,6 +192,20 @@ export default{
         this.ownBlog = (blog.userId == this.$store.getters.getUser.id)
       })
     },
+    giveLike() {
+      this.$message.success("谢谢你的点赞")
+    },
+    collection() {
+      this.$message.success("谢谢你的收藏")
+    },
+    copyLink(val) {
+      const url = 'https://www.specialnn.top/#/blog/' + val
+      this.$copyText(url).then(() => {
+        this.$message.success("复制成功，快去分享给别人吧")
+      }).catch(err => {
+        this.$message.error("复制失败")
+      })
+    },
     blogDele() {
       this.$axios.post('/blog/delete', this.blog, {
         headers: {
@@ -195,20 +220,7 @@ export default{
     async getMonitor() {
       this.$axios.get('/monitor').then(res =>{
         const monitorData = res.data.data
-        const monitor = [
-          {name : '访客', icon: 'mdi-account-multiple', number: 0},
-          {name : '博客', icon: 'mdi-post-outline', number: 0}
-        ]
-        monitor.forEach(item =>{
-          if(item.name == '访客') {
-            item.number = monitorData.visitTotal
-          } else if(item.name == '博客') {
-            item.number = monitorData.blogTotal
-          } else if(item.name == '留言') {
-            item.number = monitorData.blessTotal
-          }
-        })
-        this.$store.commit('SET_MONITOR', monitor)
+        this.$store.commit('SET_MONITOR', monitorData)
       })
     },
   }
@@ -216,13 +228,16 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-.my-text{
+.my-text-1{
   line-height: 30px;
+}
+.my-text-2{
+  line-height: 40px;
 }
 .v-note-wrapper{
   border: none;
   ::v-deep .v-note-panel .v-note-show .v-show-content{
-    padding: 8px 15px 10px 15px;
+    padding: 8px 12px 10px 12px;
   }
 }
 </style>

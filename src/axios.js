@@ -2,8 +2,8 @@ import axios from 'axios'
 import store from './store'
 import router from './router'
 import Message from './components/Message/index.js'
-// public文件夹下的config.js配置
-axios.defaults.baseURL= window.PLATFROM_CONFIG.baseURL + ':8081'
+
+axios.defaults.baseURL= '/api'
 
 //前置拦截
 axios.interceptors.request.use(config =>{
