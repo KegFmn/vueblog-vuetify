@@ -265,7 +265,7 @@ export default {
     },
     navigations: [
       {to: '/', icon: 'mdi-home-variant', name: '主页'},
-      {to: '', icon: 'mdi-link-variant-plus', name: '友链'},
+      {to: '/blogLink', icon: 'mdi-link-variant-plus', name: '友链'},
       {to: '/blogGuest', icon: 'mdi-calendar-text', name: '留言板'},
       {to: '/blog/add', icon: 'mdi-pencil', name: '发表博客'},
     ],

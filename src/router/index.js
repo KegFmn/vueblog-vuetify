@@ -58,6 +58,11 @@ const routes = [
         name: 'BlogGuest',
         component: () => import('@/views/BlogGuest.vue')
       },
+      {
+        path: '/blogLink',
+        name: 'BlogLink',
+        component: () => import('@/views/BlogLink.vue')
+      },
     ]
   },
   {

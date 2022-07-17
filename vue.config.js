@@ -15,7 +15,7 @@ module.exports = {
     proxy: {
       '/api': {
         target: process.env.VUE_APP_BASE_API,
-        secure: true, // 如果是https接口，需要配置这个参数
+        secure: false, // 如果是https接口，需要配置这个参数
         changeOrigin: true, //支持跨域
         ws: true, //是否代理websockets
         pathRewrite: {

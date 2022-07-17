@@ -93,11 +93,10 @@ export default {
 
       this.$axios.get('/search', {params} ).then(res =>{
         this.blogs = res.data.data.content
-        this.currentPage = res.data.data.pageable.pageNumber
+        this.currentPage = res.data.data.pageable.pageNumber + 1
         this.pageSize = res.data.data.pageable.pageSize
-        this.total = res.data.data.number
-        this.length = Math.ceil(this.total/this.pageSize)
-        console.log(res.data.data);
+        this.total = res.data.data.totalElements
+        this.length = res.data.data.totalPages
       })
     },
     giveLike() {
