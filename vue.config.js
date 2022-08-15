@@ -1,5 +1,28 @@
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
+
+const isProd = process.env.NODE_ENV === 'production' // 是否生产环境
+
+let cdn = {
+  css: [
+    // vuetify css
+    'https://cdn.bootcss.com/vuetify/2.4.0/vuetify.min.css',
+    // 富文本框插件样式
+    'https://unpkg.com/@mdi/font@latest/css/materialdesignicons.min.css'
+  ],
+  js: [
+    // vue must at first!
+    'https://cdn.bootcss.com/vue/2.6.11/vue.min.js',
+    // vue-router js
+    'https://cdn.bootcss.com/vue-router/3.2.0/vue-router.min.js',
+    // axios
+    'https://cdn.bootcss.com/axios/0.24.0/axios.min.js',
+    // vue-clipboard
+    'https://cdn.bootcss.com/vue-clipboard2/0.3.3/vue-clipboard.min.js'
+  ]
+}
+
+cdn = isProd ? cdn : { css: [], js: [] }
 
 module.exports = {
   publicPath: './', 
@@ -27,15 +50,39 @@ module.exports = {
   },
 
   chainWebpack: config => {
-    config
-      .plugin('html')
-      .tap(args => {
-        args[0].title= 'MyBlog'
-        return args
+
+    if (isProd) {
+      // 删除预加载
+      config.plugins.delete('preload');
+      config.plugins.delete('prefetch');
+      // 压缩代码
+      config.optimization.minimize(true);
+      // 分割代码
+      config.optimization.splitChunks({
+          chunks: 'all'
       })
+      // 生产环境注入cdn
+      config.plugin('html')
+          .tap(args => {
+              args[0].title= 'MyBlog',
+              args[0].cdn = cdn;
+              return args;
+          });
+    }
   },
 
-  configureWebpack: config => {    
+  configureWebpack: config => {
+    
+    if (isProd) {
+      // 用cdn方式引入
+      config.externals = {
+          'vue': 'Vue',
+          'vue-router': 'VueRouter',
+          'axios': 'axios',
+          'vueClipboard': 'VueClipboard'
+      }
+    }
+
     const plugins = [];
 
     plugins.push(

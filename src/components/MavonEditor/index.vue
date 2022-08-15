@@ -133,11 +133,12 @@ export default {
       },
       // 高亮文件
       externalLink: {
-        hljs_js: () => '/mavon-editor/highlightjs/highlight.min.js',
-        hljs_css: (css) => '/mavon-editor/highlightjs/styles/' + css + '.min.css',
-        hljs_lang: (lang) => '/mavon-editor/highlightjs/languages/' + lang + '.min.js',
-        katex_css: () => '/mavon-editor/katex/katex.min.css',
-        katex_js: () => '/mavon-editor/katex/katex.min.js',
+        markdown_css: () => 'https://cdn.bootcdn.net/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css',
+        hljs_js: () => 'https://cdn.bootcdn.net/ajax/libs/highlight.js/11.3.1/highlight.min.js',
+        hljs_css: (css) => 'https://cdn.bootcdn.net/ajax/libs/highlight.js/11.3.1/styles/' + css + '.min.css',
+        hljs_lang: (lang) => 'https://cdn.bootcdn.net/ajax/libs/highlight.js/11.3.1/languages/' + lang +'.min.js',
+        katex_css: () => 'https://cdn.bootcdn.net/ajax/libs/KaTeX/0.8.3/katex.min.css',
+        katex_js: () => 'https://cdn.bootcdn.net/ajax/libs/KaTeX/0.8.3/katex.min.js',
       },
       // 代码风格
       codeStyle: 'stackoverflow-dark'

@@ -179,8 +179,8 @@ export default{
         this.blog.created = blog.created
         this.blog.updated = blog.updated
         this.blog.content = blog.content
-        this.blog.userName = blog.user.userName
-        this.blog.typeName = blog.type.typeName
+        this.blog.userName = blog.userName
+        this.blog.typeName = blog.typeName
         
         // const MarkdownIt = mavonEditor.markdownIt
         // console.log(this.$markdownIt);
