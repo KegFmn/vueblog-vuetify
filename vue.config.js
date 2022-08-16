@@ -1,24 +1,33 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const isProd = process.env.NODE_ENV === 'production' // 是否生产环境
 
 let cdn = {
   css: [
     // vuetify css
-    'https://cdn.bootcss.com/vuetify/2.4.0/vuetify.min.css',
-    // 富文本框插件样式
-    'https://unpkg.com/@mdi/font@latest/css/materialdesignicons.min.css'
+    'https://cdn.bootcdn.net/ajax/libs/vuetify/2.4.0/vuetify.min.css',
+    // gitalk
+    'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css'
   ],
   js: [
     // vue must at first!
-    'https://cdn.bootcss.com/vue/2.6.11/vue.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js',
+    // vuex
+    'https://cdn.jsdelivr.net/npm/vuex@3.4.0/dist/vuex.min.js',
     // vue-router js
-    'https://cdn.bootcss.com/vue-router/3.2.0/vue-router.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/vue-router/3.2.0/vue-router.min.js',
+    // vutify
+    'https://cdn.bootcdn.net/ajax/libs/vuetify/2.4.0/vuetify.min.js',
     // axios
-    'https://cdn.bootcss.com/axios/0.24.0/axios.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.min.js',
+    // mavon-editor
+    'https://fastly.jsdelivr.net/npm/mavon-editor@2.10.4/dist/mavon-editor.min.js',
     // vue-clipboard
-    'https://cdn.bootcss.com/vue-clipboard2/0.3.3/vue-clipboard.min.js'
+    'https://cdn.bootcdn.net/ajax/libs/vue-clipboard2/0.3.3/vue-clipboard.min.js',
+    // gitalk
+    'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js'
   ]
 }
 
@@ -69,6 +78,9 @@ module.exports = {
               return args;
           });
     }
+
+    config.plugin('webpack-bundle-analyzer')
+        .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin);
   },
 
   configureWebpack: config => {
@@ -77,9 +89,13 @@ module.exports = {
       // 用cdn方式引入
       config.externals = {
           'vue': 'Vue',
+          'vuex': 'Vuex',
           'vue-router': 'VueRouter',
+          'vuetify': 'Vuetify',
           'axios': 'axios',
-          'vueClipboard': 'VueClipboard'
+          'mavon-editor': 'mavonEditor',
+          'vue-clipboard2': 'VueClipboard',
+          'gitalk': 'Gitalk'
       }
     }
 
@@ -108,6 +124,15 @@ module.exports = {
           threshold: 10240, // 对超过10k的数据压缩
           deleteOriginalAssets: false, // 不删除源文件
           minRatio: 0.8 // 压缩比
+      })
+    )
+
+    plugins.push(
+      new BundleAnalyzerPlugin({
+          analyzerMode: 'static', //可选值有server static disabled
+          generateStatsFile: false,
+          statsOptions: { source: false },
+          openAnalyzer: false
       })
     )
 

@@ -7,7 +7,7 @@ import Message from './components/Message/index.js'
 axios.defaults.baseURL= '/api'
 
 // 本地
-// axios.defaults.baseURL= 'http://localhost:8081'
+// axios.defaults.baseURL= 'https://www.specialnn.top/api'
 
 //前置拦截
 axios.interceptors.request.use(config =>{

@@ -1,11 +1,16 @@
 <template>
-  
+  <v-row>
+    <v-col class="gitalk" cols="24">
+      <Gitalk/>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
+import Gitalk from '../components/Gitalk/index.vue'
 export default {
   name: 'BlogGuest',
-
+  components: { Gitalk },
   data: () => ({
 
   }),
@@ -21,5 +26,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.gitalk{
+  padding: 12px 36px 12px 36px;
+}
 </style>

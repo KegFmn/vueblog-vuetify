@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
+    "gitalk": "^1.7.2",
     "mavon-editor": "^2.10.4",
     "vue": "^2.6.11",
     "vue-clipboard2": "^0.3.3",
@@ -28,7 +29,8 @@
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vue-cli-plugin-vuetify": "~2.4.5",
     "vue-template-compiler": "^2.6.11",
-    "vuetify-loader": "^1.7.0"
+    "vuetify-loader": "^1.7.0",
+    "webpack-bundle-analyzer": "^4.5.0"
   },
   "browserslist": [
     "> 1%",
