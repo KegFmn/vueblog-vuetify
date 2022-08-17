@@ -12,13 +12,16 @@ jobs:
     runs-on: ubuntu-latest
     # 步骤
     steps:
-    # 使用别人的action
-    - uses: actions/checkout@v2
-    - name: npm install
-      run: npm install
-    - name: npm run build
-      run: npm run build
-    # 命名这个任务为发布Deploy
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+
+    - name: Build
+      run: |
+        npm install
+        npm run build
+        
     - name: Deploy
       # 因为构建之后，需要把代码上传到服务器上，所以需要连接到ssh，并且做一个拷贝操作
       uses: cross-the-world/scp-pipeline@master
