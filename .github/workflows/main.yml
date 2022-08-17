@@ -14,13 +14,9 @@ jobs:
     steps:
     # 使用别人的action
     - uses: actions/checkout@v2
-    # 步骤名称
     - name: npm install
-      # 步骤执行指令
       run: npm install
-    # 步骤名称
     - name: npm run build
-      # 步骤执行指令
       run: npm run build
     # 命名这个任务为发布Deploy
     - name: Deploy
