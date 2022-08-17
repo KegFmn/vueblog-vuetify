@@ -93,7 +93,7 @@ module.exports = {
           'vue-router': 'VueRouter',
           'vuetify': 'Vuetify',
           'axios': 'axios',
-          'mavon-editor': 'mavonEditor',
+          'mavon-editor': 'MavonEditor',
           'vue-clipboard2': 'VueClipboard',
           'gitalk': 'Gitalk'
       }
