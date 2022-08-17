@@ -1,6 +1,5 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const isProd = process.env.NODE_ENV === 'production' // 是否生产环境
 
@@ -79,8 +78,6 @@ module.exports = {
           });
     }
 
-    config.plugin('webpack-bundle-analyzer')
-        .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin);
   },
 
   configureWebpack: config => {
@@ -124,15 +121,6 @@ module.exports = {
           threshold: 10240, // 对超过10k的数据压缩
           deleteOriginalAssets: false, // 不删除源文件
           minRatio: 0.8 // 压缩比
-      })
-    )
-
-    plugins.push(
-      new BundleAnalyzerPlugin({
-          analyzerMode: 'static', //可选值有server static disabled
-          generateStatsFile: false,
-          statsOptions: { source: false },
-          openAnalyzer: false
       })
     )
 
