@@ -27,6 +27,6 @@ export default {
 
 <style lang="scss" scoped>
 .gitalk{
-  padding: 12px 36px 12px 36px;
+  padding: 12px 24px 12px 24px;
 }
 </style>
