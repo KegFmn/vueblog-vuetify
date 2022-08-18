@@ -35,5 +35,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+#gitalk-container{
+  .gt-container{
+    .gt-meta{
+      margin-top: 0px;
+    }
+  }
+}
 </style>
