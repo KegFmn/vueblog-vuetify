@@ -30,8 +30,10 @@ export default {
   padding: 12px 24px 12px 24px;
 }
 .gitalk-container{
-  .gt-meta{
-    margin-top: 0px;
+  .gt-container{
+    .gt-meta{
+      margin-top: 0px;
+    }
   }
 }
 
