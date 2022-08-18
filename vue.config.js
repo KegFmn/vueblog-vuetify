@@ -7,6 +7,8 @@ let cdn = {
   css: [
     // vuetify css
     'https://cdn.bootcdn.net/ajax/libs/vuetify/2.4.0/vuetify.min.css',
+    // material-design-icons
+    'https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css',
     // gitalk
     'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css'
   ],
