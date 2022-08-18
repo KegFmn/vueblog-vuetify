@@ -28,13 +28,12 @@ export default {
 <style lang="scss" scoped>
 .gitalk{
   padding: 12px 24px 12px 24px;
-}
-.gitalk-container{
-  .gt-container{
-    .gt-meta{
-      margin-top: 0px;
+  .gitalk-container{
+    .gt-container{
+      .gt-meta{
+        margin-top: 0px;
+      }
     }
   }
 }
-
 </style>
