@@ -1,7 +1,7 @@
 <template>
   <v-row>
-    <v-col class="gitalk" cols="24">
-      <Gitalk/>
+    <v-col class="gitalk-col" cols="24">
+      <Gitalk class="gitalk"/>
     </v-col>
   </v-row>
 </template>
@@ -26,12 +26,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.gitalk{
+.gitalk-col{
   padding: 12px 24px 12px 24px;
-  .gitalk-container{
-    .gt-container{
-      .gt-meta{
-        margin-top: 0px;
+  .gitalk{
+    .gitalk-container{
+      .gt-container{
+        .gt-meta{
+          margin-top: 0px;
+        }
       }
     }
   }
