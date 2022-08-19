@@ -10,7 +10,9 @@ let cdn = {
     // material-design-icons
     'https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css',
     // gitalk
-    'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css'
+    'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css',
+    // mavon-editor
+    'https://cdn.jsdelivr.net/npm/mavon-editor@2.10.4/dist/css/index.css'
   ],
   js: [
     // vue must at first!
@@ -23,12 +25,14 @@ let cdn = {
     'https://cdn.bootcdn.net/ajax/libs/vuetify/2.4.0/vuetify.min.js',
     // axios
     'https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.min.js',
-    // mavon-editor
-    'https://fastly.jsdelivr.net/npm/mavon-editor@2.10.4/dist/mavon-editor.min.js',
     // vue-clipboard
     'https://cdn.bootcdn.net/ajax/libs/vue-clipboard2/0.3.3/vue-clipboard.min.js',
     // gitalk
-    'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js'
+    'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js',
+    // mavon-editor
+    'https://fastly.jsdelivr.net/npm/mavon-editor@2.10.4/dist/mavon-editor.min.js'
+    
+    
   ]
 }
 
