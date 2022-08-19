@@ -18,7 +18,7 @@ export default {
       id: location.pathname,      // Ensure uniqueness and length less than 50
       language:'zh-CN',
       distractionFreeMode: false,  // Facebook-like distraction free mode
-      pagerDirection: 'last'
+      pagerDirection: 'first'
     }
   }),
 
