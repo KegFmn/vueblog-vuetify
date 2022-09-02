@@ -19,7 +19,6 @@ jobs:
 
     - name: Build
       run: |
-        npm install -g npm
         npm install
         npm run build
 
