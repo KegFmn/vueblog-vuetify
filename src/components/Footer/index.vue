@@ -33,10 +33,15 @@
         class="grey lighten-4 py-4 block--text text-center"
         :cols="footerCols"
       >
-        <v-btn icon class="pb-1">
+        <!-- <v-btn icon class="pb-1">
           <v-icon>mdi-police-badge</v-icon>
-        </v-btn>
-        <span>京公网安备 <strong><a class="footer-a" href="https://beian.miit.gov.cn/#/Integrated/index">待审核</a></strong></span>
+        </v-btn> -->
+        <img src="/images/record.png" class="img">
+        <span>
+          <strong>
+            <a class="footer-a" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602010820">粤公网安备 44010602010820号</a>
+          </strong>
+        </span>
       </v-col>
     </v-row>
   </v-footer>
@@ -72,5 +77,9 @@ export default {
 }
 .footer-a:hover{
   text-decoration:underline;
+}
+.img {
+  position: relative;
+  top: 4px;
 }
 </style>
