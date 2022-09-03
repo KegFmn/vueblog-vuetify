@@ -6,7 +6,7 @@ module.exports = {
     [
       'prismjs',
       {
-        languages: ['json','html','css','javascript','java','xml','yml','yaml','bash','docker','dockerfile','nginx','git','sql'],
+        languages: ['json','html','css','javascript','java','xml','yml','yaml','bash','docker','dockerfile','nginx','git','gitignore','sql'],
       },
     ],
   ],
