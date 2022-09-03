@@ -4,10 +4,10 @@ import router from './router'
 import Message from './components/Message/index.js'
 
 // 开发
-axios.defaults.baseURL= '/api'
+// axios.defaults.baseURL= '/api'
 
 // 本地
-// axios.defaults.baseURL= 'https://www.specialnn.top/api'
+axios.defaults.baseURL= 'https://www.specialnn.top/api'
 
 //前置拦截
 axios.interceptors.request.use(config =>{

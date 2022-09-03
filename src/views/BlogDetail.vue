@@ -118,19 +118,10 @@
         <!-- 博客内容 -->
         <v-row align="end">
           <v-col>
-            <!-- <v-sheet
-              class="content markdown-body pa-4"
-              v-html="blog.content"
-              v-highlight
-            >
-            </v-sheet> -->
-            <mavonView
+            <mdEditor
+              v-if="initData"
               v-model="blog.content"
-              :defaultOpen="editor.defaultOpenDetail"
-              :subfield="editor.subfieldDetail" 
-              :toolbarsFlag="editor.toolbarsFlagDetail"
-              :boxShadow="editor.boxShadow"
-              :previewBackground="editor.previewBackground"
+              :model="editor.model"
             />
           </v-col>
         </v-row>
@@ -139,10 +130,10 @@
 </template>
 
 <script>
-import MavonView from '../components/MavonEditor/index.vue'
+import mdEditor from '../components/VMdEditor/index.vue'
 export default{
   name: 'BlogDetail',
-  components: { MavonView },
+  components: { mdEditor },
   data: () =>({
     blog: {
       id: '',
@@ -152,18 +143,14 @@ export default{
       typeName:'',
       created: '',
       updated:'',
-      content: ''
+      content: '',
     },
     editor: {
-      defaultOpenDetail: 'preview',
-      previewBackground: '#FFFFFF',
-      subfieldDetail: false,
-      toolbarsFlagDetail: false,
-      boxShadow: false
+      model: 'preview'
     },
     ownBlog: false,
     dialog: false,
-    
+    initData: false
   }),
   mounted() {
     this.getBlog()
@@ -182,13 +169,7 @@ export default{
         this.blog.userName = blog.userName
         this.blog.typeName = blog.typeName
         
-        // const MarkdownIt = mavonEditor.markdownIt
-        // console.log(this.$markdownIt);
-        // const md = this.$markdownIt.set({ breaks: false });
-        // const result = md.render(blog.content)
-
-        // this.blog.content = result
-        
+        this.initData = true
         this.ownBlog = (blog.userId == this.$store.getters.getUser.id)
       })
     },
