@@ -26,7 +26,7 @@
         <v-btn icon class="pb-1">
           <v-icon>mdi-clipboard-text</v-icon>
         </v-btn>
-        <span >备案号：<strong><a class="footer-a" href="https://beian.miit.gov.cn/#/Integrated/index">粤ICP备2022068901号-1</a></strong></span>
+        <span ><strong><a class="footer-a" href="https://beian.miit.gov.cn/#/Integrated/index">粤ICP备2022068901号-1</a></strong></span>
       </v-col>
 
       <v-col
