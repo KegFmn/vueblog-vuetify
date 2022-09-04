@@ -70,9 +70,7 @@ export default {
           const imageBase64 = reader.result
           insertImage({
             url: imageBase64,
-            desc: files[i].name,
-            // width: 'auto',
-            // height: 'auto',
+            desc: files[i].name
           });
         }
       }
