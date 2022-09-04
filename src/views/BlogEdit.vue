@@ -39,7 +39,6 @@
 
         <v-col :cols="contentCols">
           <mdEditor
-            v-if="initData" 
             v-model="ruleForm.content"
             :model="editor.model"
           />
@@ -335,8 +334,7 @@ export default {
     dialog2: false,
     dialog3: false,
     dialog4: false,
-    selectedItem: null,
-    initData: false
+    selectedItem: null
   }),
   computed: {
     types() {
@@ -382,10 +380,7 @@ export default {
           this.ruleForm.content = blog.content
           this.ruleForm.selectType = blog.typeId
           this.ruleForm.original = blog.original
-          this.initData = true
         })
-      } else {
-        this.initData = true
       }
     },
     getType() {

@@ -119,7 +119,6 @@
         <v-row align="end">
           <v-col>
             <mdEditor
-              v-if="initData"
               v-model="blog.content"
               :model="editor.model"
             />
@@ -149,8 +148,7 @@ export default{
       model: 'preview'
     },
     ownBlog: false,
-    dialog: false,
-    initData: false
+    dialog: false
   }),
   mounted() {
     this.getBlog()
@@ -168,9 +166,7 @@ export default{
         this.blog.content = blog.content
         this.blog.userName = blog.userName
         this.blog.typeName = blog.typeName
-        
-        this.initData = true
-        this.ownBlog = (blog.userId == this.$store.getters.getUser.id)
+        this.ownBlog = (this.$store.getters.getUser == null ? false : blog.userId == this.$store.getters.getUser.id)
       })
     },
     giveLike() {
