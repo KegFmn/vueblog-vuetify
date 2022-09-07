@@ -2,6 +2,7 @@
   <v-md-editor
     v-model="content"
     class="md-editor"
+    height="80"
     :mode="mode"
     :disabled-menus="[]"
     :left-toolbar="leftToolbar"
@@ -81,6 +82,6 @@ export default {
 
 <style lang="scss" scoped>
 .md-editor{
-  min-height: 60vh
+  // min-height: 60vh
 }
 </style>
