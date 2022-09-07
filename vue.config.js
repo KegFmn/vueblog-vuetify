@@ -6,16 +6,15 @@ const isProd = process.env.NODE_ENV === 'production' // 是否生产环境
 let cdn = {
   css: [
     // vuetify
-    'https://cdn.bootcdn.net/ajax/libs/vuetify/2.4.0/vuetify.min.css',
+    // 'https://cdn.bootcdn.net/ajax/libs/vuetify/2.4.0/vuetify.min.css',
     // gitalk
-    'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css',
+    // 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css',
     // v-md-editor
-    'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/style/base-editor.css',
-    'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/theme/style/vuepress.css',
-    'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/plugins/copy-code/copy-code.css',
-    'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/plugins/emoji/emoji.css',
-    'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/plugins/todo-list/todo-list.css'
-    
+    // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/style/base-editor.css',
+    // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/theme/style/vuepress.css',
+    // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/plugins/copy-code/copy-code.css',
+    // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/plugins/emoji/emoji.css',
+    // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/plugins/todo-list/todo-list.css'
   ],
   js: [
     // vue
@@ -34,9 +33,9 @@ let cdn = {
     'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js',
     // v-md-editor
     'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/base-editor.min.js',
-    'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/theme/vuepress.js',
+    // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/theme/vuepress.js',
     // prism
-    'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js'
+    // 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js'
   ]
 }
 
@@ -103,8 +102,8 @@ module.exports = {
         'vue-clipboard2': 'VueClipboard',
         'gitalk': 'Gitalk',
         '@kangc/v-md-editor': 'VMdEditor',
-        '@kangc/v-md-editor/vuepress': 'VMdTheme',
-        'prismjs/components': 'Prism'
+        // '@kangc/v-md-editor/lib/theme/vuepress': 'VMdTheme',
+        // 'prismjs': 'Prism'
       }
     }
 
