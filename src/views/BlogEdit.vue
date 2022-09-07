@@ -401,11 +401,7 @@ export default {
       }
       
       if(blog.title != null && blog.description != null && blog.content != null && blog.typeId != null && blog.original != null){
-        this.$axios.post('/blog/edit', blog, {
-          headers: {
-            "Authorization": localStorage.getItem("token")
-          }
-        }).then(res =>{
+        this.$axios.post('/blog/edit', blog).then(res =>{
           if(blog.id == null) {
             console.log('新增');
             this.getMonitor()
@@ -420,11 +416,7 @@ export default {
     saveType(){
       this.dialog3 = false
       if(this.type.typeName != null){
-        this.$axios.post('/type/save', this.type, {
-          headers: {
-            "Authorization": localStorage.getItem("token")
-          }
-        }).then(res =>{
+        this.$axios.post('/type/save', this.type).then(res =>{
           this.getType()
           this.type.id = null
           this.type.typeName = null
@@ -445,11 +437,7 @@ export default {
     },
     deleteType(){
       this.dialog3 = false
-      this.$axios.post('type/delete?typeName=', this.type, {
-        headers: {
-          "Authorization": localStorage.getItem("token")
-        }
-      }).then(res =>{
+      this.$axios.post('type/delete?typeName=', this.type).then(res =>{
         this.getType()
         this.dialog4 = false
         this.type.id = null
