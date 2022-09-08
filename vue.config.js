@@ -19,12 +19,12 @@ let cdn = {
   js: [
     // vue
     'https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js',
-    // vuex
-    'https://cdn.jsdelivr.net/npm/vuex@3.4.0/dist/vuex.min.js',
-    // vue-router js
-    'https://cdn.bootcdn.net/ajax/libs/vue-router/3.2.0/vue-router.min.js',
     // axios
     'https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.min.js',
+    // vuex
+    'https://cdn.bootcdn.net/ajax/libs/vuex/3.6.2/vuex.min.js',
+    // vue-router js
+    'https://cdn.bootcdn.net/ajax/libs/vue-router/3.2.0/vue-router.min.js',
     // vutify
     'https://cdn.bootcdn.net/ajax/libs/vuetify/2.4.0/vuetify.min.js',
     // vue-clipboard
