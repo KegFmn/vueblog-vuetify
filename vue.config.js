@@ -76,7 +76,35 @@ module.exports = {
       config.optimization.minimize(true);
       // 分割代码
       config.optimization.splitChunks({
-          chunks: 'all'
+         cacheGroups: {
+            vendor: {
+                chunks: 'all',
+                test: /node_modules/,
+                name: 'vendor',
+                minChunks: 1,
+                maxInitialRequests: 5,
+                minSize: 0,
+                priority: 100
+            },
+            common: {
+                chunks: 'all',
+                test: /[\\/]src[\\/]js[\\/]/,
+                name: 'common',
+                minChunks: 2,
+                maxInitialRequests: 5,
+                minSize: 0,
+                priority: 60
+            },
+            styles: {
+                name: 'styles',
+                test: /\.(sa|sc|c)ss$/,
+                chunks: 'all',
+                enforce: true
+            },
+            runtimeChunk: {
+                name: 'manifest'
+            }
+        }
       })
       // 生产环境注入cdn
       config.plugin('html')
@@ -115,23 +143,25 @@ module.exports = {
           output: {
             comments: false, // 去掉注释
           },
-          warnings: false,
           compress: {
             drop_console: true,
             drop_debugger: false,
             pure_funcs: ['console.log']//移除console
-          }
-        }
+          },
+          warnings: false
+        },
+        sourceMap: false,
+        parallel: true
       })
     )
     
     plugins.push(
       new CompressionWebpackPlugin({
           algorithm: 'gzip',
-          test: /\.(js|css)$/,// 匹配文件名
+          test: /\.(html|js|css)$/,// 匹配文件名
           threshold: 10240, // 对超过10k的数据压缩
-          // deleteOriginalAssets: false, // 不删除源文件
-          minRatio: 0.6 // 压缩比
+          deleteOriginalAssets: false, // 删除源文件
+          minRatio: 0.8 // 压缩比
       })
     )
 
