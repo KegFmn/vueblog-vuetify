@@ -38,7 +38,7 @@ axios.interceptors.response.use(response =>{
       setTimeout(()=>{
         store.commit("REMOVE_INFO")
         router.push("/login")
-      },500);
+      }, 500);
     }
     Message.error(error.message)
     return Promise.reject(error)
