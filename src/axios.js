@@ -35,8 +35,10 @@ axios.interceptors.response.use(response =>{
     }
 
     if(error.response.status === 401){
-      store.commit("REMOVE_INFO")
-      router.push("/login")
+      setTimeout(()=>{
+        store.commit("REMOVE_INFO")
+        router.push("/login")
+      }, 500);
     }
     Message.error(error.message)
     return Promise.reject(error)

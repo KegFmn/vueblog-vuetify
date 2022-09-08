@@ -11,7 +11,7 @@
     "axios": "^0.24.0",
     "babel-plugin-prismjs": "^2.1.0",
     "core-js": "^3.6.5",
-    "gitalk": "^1.7.2",
+    "gitalk": "^1.8.0",
     "prismjs": "^1.29.0",
     "vue": "^2.6.11",
     "vue-clipboard2": "^0.3.3",

@@ -18,20 +18,10 @@ export default {
   }),
 
   methods: {
-    addTraffic() {
-      this.$axios.get('/monitor/addVisitTotal')
-    },
-    list() {
-      this.$axios.get('/types').then(res =>{
-        const blogType = res.data.data
-        this.$store.commit('SET_BLOGTYPE', blogType)
-      })
-    }
+    
   },
-
   created() {
-    this.addTraffic()
-    this.list()
+
   },
 }
 </script>
