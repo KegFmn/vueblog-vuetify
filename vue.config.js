@@ -18,15 +18,15 @@ let cdn = {
   ],
   js: [
     // vue
-    'https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js',
     // vuex
-    'https://cdn.jsdelivr.net/npm/vuex@3.4.0/dist/vuex.min.js',
+    'https://cdn.jsdelivr.net/npm/vuex@3.6.2/dist/vuex.min.js',
     // vue-router js
-    'https://cdn.bootcdn.net/ajax/libs/vue-router/3.2.0/vue-router.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/vue-router/3.5.3/vue-router.min.js',
     // axios
     'https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.min.js',
     // vutify
-    'https://cdn.bootcdn.net/ajax/libs/vuetify/2.4.0/vuetify.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/vuetify/2.6.1/vuetify.min.js',
     // vue-clipboard
     'https://cdn.bootcdn.net/ajax/libs/vue-clipboard2/0.3.3/vue-clipboard.min.js',
     // gitalk
