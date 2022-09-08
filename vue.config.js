@@ -30,7 +30,7 @@ let cdn = {
     // vue-clipboard
     'https://cdn.bootcdn.net/ajax/libs/vue-clipboard2/0.3.3/vue-clipboard.min.js',
     // gitalk
-    'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/gitalk/1.7.2/gitalk.min.js',
     // v-md-editor
     'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/base-editor.min.js',
     // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/theme/vuepress.js',
