@@ -3,11 +3,11 @@
     v-model="content"
     class="md-editor"
     :mode="mode"
-    :height="height"
     :disabled-menus="[]"
     :left-toolbar="leftToolbar"
     :right-toolbar="rightToolbar"
     @upload-image="handleUploadImage"
+    :height="mode == 'editable' ? '70vh' : ''"
   >
   </v-md-editor>
 </template>
@@ -49,17 +49,11 @@ export default {
     },
     content(val) {
       this.$emit('input', val)
-    },
-    model(val) {
-      if(val == 'preview') {
-      	this.height = ''
-      }
     }
   },
   data() {
     return {
       content: '',
-      height: '70vh',
       mode: this.model,
       leftToolbar: 'undo redo clear | h bold italic strikethrough quote emoji todo-list | ul ol table hr | link image code | save',
       rightToolbar: 'preview toc sync-scroll'
