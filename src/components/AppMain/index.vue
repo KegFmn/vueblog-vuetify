@@ -165,10 +165,24 @@ export default {
         this.$store.commit('SET_MONITOR', monitorData)
       })
     },
+    addTraffic() {
+      this.$axios.get('/monitor/addVisitTotal')
+    },
+    list() {
+      this.$axios.get('/types').then(res =>{
+        const blogType = res.data.data
+        this.$store.commit('SET_BLOGTYPE', blogType)
+      })
+    }
   },
 
   mounted() {
+    
+  },
+  created() {
+    this.addTraffic()
     this.getMonitor()
+    this.list()
   }
 }
 </script>
