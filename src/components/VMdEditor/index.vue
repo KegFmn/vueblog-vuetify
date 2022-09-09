@@ -51,15 +51,15 @@ export default {
       this.$emit('input', val)
     },
     model(val) {
-      if(val == 'editable') {
-      	this.height = '70vh'
+      if(val == 'preview') {
+      	this.height = ''
       }
     }
   },
   data() {
     return {
       content: '',
-      height: '',
+      height: '70vh',
       mode: this.model,
       leftToolbar: 'undo redo clear | h bold italic strikethrough quote emoji todo-list | ul ol table hr | link image code | save',
       rightToolbar: 'preview toc sync-scroll'
