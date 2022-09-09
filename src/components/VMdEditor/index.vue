@@ -2,8 +2,8 @@
   <v-md-editor
     v-model="content"
     class="md-editor"
-    height="70vh"
     :mode="mode"
+    :height="height"
     :disabled-menus="[]"
     :left-toolbar="leftToolbar"
     :right-toolbar="rightToolbar"
@@ -49,11 +49,17 @@ export default {
     },
     content(val) {
       this.$emit('input', val)
+    },
+    model(val) {
+      if(val == 'editable') {
+      	this.height = '70vh'
+      }
     }
   },
   data() {
     return {
       content: '',
+      height: '',
       mode: this.model,
       leftToolbar: 'undo redo clear | h bold italic strikethrough quote emoji todo-list | ul ol table hr | link image code | save',
       rightToolbar: 'preview toc sync-scroll'
