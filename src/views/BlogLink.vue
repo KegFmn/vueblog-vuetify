@@ -3,7 +3,7 @@
     <v-col
       v-for="(item, i) in items"
       :key="i"
-      cols="6"
+      :cols="col"
     >
       <v-card
         :color="item.color"
@@ -49,6 +49,15 @@ export default {
         case 'lg': return 125
         case 'xl': return 125
       }
+    }，
+    col() {
+      switch(this.$vuetify.breakpoint.name){
+        case 'xs': return 12
+        case 'sm': return 12
+        case 'md': return 5
+        case 'lg': return 5
+        case 'xl': return 5
+      }
     }
   },
 
@@ -68,6 +77,13 @@ export default {
           title: 'CSDN',
           artist: '专业开发者社区',
         },
+        {
+          color: '#efefef',
+          href: '119.91.142.29:8989',
+          avatar: 'http://119.91.142.29:8989/upload/2022/09/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220907141015.jpg',
+          title: 'Tong',
+          artist: '大佬',
+        }
       ],
   }),
 
