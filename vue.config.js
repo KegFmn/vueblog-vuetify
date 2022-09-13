@@ -22,7 +22,7 @@ let cdn = {
     // axios
     'https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.min.js',
     // vuex
-    'https://cdn.jsdelivr.net/npm/vuex@3.6.2/dist/vuex.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/vuex/3.6.2/vuex.min.js',
     // vue-router js
     'https://cdn.bootcdn.net/ajax/libs/vue-router/3.5.3/vue-router.min.js',
     // axios
@@ -34,7 +34,7 @@ let cdn = {
     // gitalk
     'https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.js',
     // v-md-editor
-    'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/base-editor.min.js',
+    'https://unpkg.com/@kangc/v-md-editor@1.7.11/lib/base-editor.js',
     // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/theme/vuepress.js',
     // prism
     // 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js'

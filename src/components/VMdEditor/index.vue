@@ -7,6 +7,7 @@
     :left-toolbar="leftToolbar"
     :right-toolbar="rightToolbar"
     @upload-image="handleUploadImage"
+    :height="mode == 'editable' ? '70vh' : ''"
   >
   </v-md-editor>
 </template>
@@ -81,6 +82,6 @@ export default {
 
 <style lang="scss" scoped>
 .md-editor{
-  min-height: 70vh
+  
 }
 </style>
