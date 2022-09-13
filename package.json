@@ -26,6 +26,7 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "compression-webpack-plugin": "^5.0.0",
+    "image-webpack-loader": "^8.1.0",
     "sass": "~1.32.0",
     "sass-loader": "^10.0.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
