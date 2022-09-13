@@ -49,7 +49,7 @@ export default {
         case 'lg': return 125
         case 'xl': return 125
       }
-    }，
+    },
     col() {
       switch(this.$vuetify.breakpoint.name){
         case 'xs': return 12
