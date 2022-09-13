@@ -83,7 +83,7 @@ export default {
           avatar: 'http://119.91.142.29:8989/upload/2022/09/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220907141015.jpg',
           title: 'Tong',
           artist: '大佬',
-        }
+        },
       ],
   }),
 
