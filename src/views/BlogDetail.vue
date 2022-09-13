@@ -102,9 +102,6 @@
                   <v-btn icon @click="giveLike">
                     <v-icon>mdi-heart</v-icon>
                   </v-btn>
-                  <v-btn icon @click="collection">
-                    <v-icon>mdi-bookmark</v-icon>
-                  </v-btn>
                   <v-btn icon class="mr-2" @click="copyLink(blog.id)">
                     <v-icon>mdi-share-variant</v-icon>
                   </v-btn>

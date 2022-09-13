@@ -6,36 +6,54 @@
         <v-col>
           <v-card
             link
-            height="170"
             rounded="xl"
             class="elevation-2"
-            
+            :to="{name:'BlogDetail', params: {blogId: blog.id}}"
           >
-            <v-card-title class="text-h5 text-no-wrap text-truncate mr-4">
-              <router-link class="blogTile" :to="{name:'BlogDetail', params: {blogId: blog.id}}">
-               {{blog.title}}
-              </router-link>
+            <v-card-title class="text-h5 text-no-wrap text-truncate mr-4 blog-title">
+              {{blog.title}}
             </v-card-title>
 
             <v-card-subtitle>
               {{blog.updated}}
             </v-card-subtitle>
 
-            <v-card-text class="text-no-wrap text-truncate">
-                {{blog.description}}
+            <v-card-text class="text-no-wrap text-truncate pb-0">
+              {{blog.description}}
             </v-card-text>
 
-            <v-card-actions class="pt-1">
-              <v-btn icon @click="giveLike">
-                <v-icon>mdi-heart</v-icon>
-              </v-btn>
-              <v-btn icon @click="collection">
-                <v-icon>mdi-bookmark</v-icon>
-              </v-btn>
-              <v-btn icon @click="copyLink(blog.id)">
-                <v-icon>mdi-share-variant</v-icon>
-              </v-btn>
-              <v-spacer></v-spacer>
+            <v-card-actions>
+              <v-list-item class="grow">
+                <v-list-item-avatar color="grey darken-3">
+                  <v-img
+                    class="elevation-2"
+                    alt="likc"
+                    src="/images/avatar.jpg"
+                  ></v-img>
+                </v-list-item-avatar>
+
+                <v-list-item-content>
+                  <v-list-item-title>KegFmn</v-list-item-title>
+                </v-list-item-content>
+
+                <v-row
+                  align="center"
+                  justify="end"
+                >
+                  <!-- <v-icon class="mr-1">
+                    mdi-heart
+                  </v-icon> -->
+                  <v-btn icon @click.prevent="giveLike">
+                    <v-icon>mdi-heart</v-icon>
+                  </v-btn>
+                  <!-- <span class="subheading mr-2">256</span> -->
+
+                  <v-btn icon @click.prevent="copyLink(blog.id)">
+                    <v-icon>mdi-share-variant</v-icon>
+                  </v-btn>
+                  <!-- <span class="subheading">45</span> -->
+                </v-row>
+              </v-list-item>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -102,9 +120,6 @@ export default {
     giveLike() {
       this.$message.success("谢谢你的点赞")
     },
-    collection() {
-      this.$message.success("谢谢你的收藏")
-    },
     copyLink(val) {
       const url = 'https://www.specialnn.top/#/blog/' + val
       this.$copyText(url).then(() => {
@@ -135,12 +150,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.blogTile {
+.blog-title {
   color: #000;
-  text-decoration: none; //去掉原有链接文字下划线
-}
-.blogTile:hover{
-  font-weight: 500;
-  text-decoration:underline;
 }
 </style>
