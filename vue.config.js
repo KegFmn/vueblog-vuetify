@@ -22,7 +22,7 @@ let cdn = {
     // axios
     'https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.min.js',
     // vuex
-    'https://cdn.jsdelivr.net/npm/vuex@3.6.2/dist/vuex.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/vuex/3.6.2/vuex.min.js',
     // vue-router js
     'https://cdn.bootcdn.net/ajax/libs/vue-router/3.5.3/vue-router.min.js',
     // axios
