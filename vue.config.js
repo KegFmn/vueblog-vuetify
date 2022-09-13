@@ -34,7 +34,7 @@ let cdn = {
     // gitalk
     'https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.js',
     // v-md-editor
-    'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/base-editor.min.js',
+    'https://unpkg.com/@kangc/v-md-editor@1.7.11/lib/base-editor.js',
     // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/theme/vuepress.js',
     // prism
     // 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js'
