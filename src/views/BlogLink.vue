@@ -80,10 +80,10 @@ export default {
         {
           color: '#67686a',
           href: 'http://119.91.142.29:8989/',
-          avatar: 'http://119.91.142.29:8989/upload/2022/09/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220907141015.jpg',
+          avatar: 'http://tong-img.oss-cn-guangzhou.aliyuncs.com/blog-img/logo.png',
           title: 'Tong',
           artist: '大佬',
-        }
+        },
       ],
   }),
 
