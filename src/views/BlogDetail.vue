@@ -99,7 +99,7 @@
                   </p>
                 </v-col>
                 <v-col cols="6" class="ml-auto d-flex justify-end">
-                  <v-btn icon @click="giveLike">
+                  <v-btn icon @click="giveLike(blog.id)" :color="color">
                     <v-icon>mdi-heart</v-icon>
                   </v-btn>
                   <v-btn icon class="mr-2" @click="copyLink(blog.id)">
@@ -139,13 +139,15 @@ export default{
       typeName:'',
       created: '',
       updated:'',
-      content: '',
+      content: ''
     },
     editor: {
       model: 'preview'
     },
     ownBlog: false,
-    dialog: false
+    dialog: false,
+    color: undefined,
+    likeFalse: true
   }),
   mounted() {
     this.getBlog()
@@ -164,10 +166,44 @@ export default{
         this.blog.userName = blog.userName
         this.blog.typeName = blog.typeName
         this.ownBlog = (this.$store.getters.getUser == null ? false : blog.userId == this.$store.getters.getUser.id)
+        let like = [];
+        if(this.$store.getters.getLike) {
+          like = this.$store.getters.getLike.split(",")
+          for(let i = 0; i < like.length; i++) {
+            if(blog.id == like[i]) {
+              this.likeFalse= false
+              this.color = 'red'
+              break;
+            }
+          }
+        }
       })
     },
-    giveLike() {
-      this.$message.success("谢谢你的点赞")
+    giveLike(val) {
+      let like = [];
+      if(this.$store.getters.getLike) {
+        like = this.$store.getters.getLike.split(",")
+      }
+      if(this.likeFalse) {
+        like.unshift(val)
+        const likeString = like.toString()
+        this.$store.commit('SET_LIKE', likeString)
+        this.color = 'red'
+        this.likeFalse = false
+        this.$message.success("谢谢你的点赞")
+      } else {
+        for(let i = 0; i < like.length; i++) {
+          if(val == like[i]) {
+            like.splice(i,1)
+            const likeString = like.toString()
+            this.$store.commit('SET_LIKE', likeString)
+            this.color = ''
+            this.likeFalse = true
+            this.$message.success("取消点赞")
+            break;
+          }
+        }
+      }
     },
     collection() {
       this.$message.success("谢谢你的收藏")

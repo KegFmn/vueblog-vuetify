@@ -275,11 +275,7 @@ export default {
   }),
   methods: {
     logout() {
-      this.$axios.get('/logout', {
-        headers: {
-          "Authorization": localStorage.getItem("token")
-        }
-      }).then(res =>{
+      this.$axios.get('/logout').then(res =>{
         this.$store.commit("REMOVE_INFO")
         this.$router.push("/login")
       })

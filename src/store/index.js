@@ -8,17 +8,18 @@ export default new Vuex.Store({
     token: localStorage.getItem("token"),
     userInfo: JSON.parse(localStorage.getItem('userInfo')),
     blogType: [],
-    monitor: {}
+    monitor: {},
+    like: localStorage.getItem("like")
   },
   mutations: {
     //set
     SET_TOKEN: (state, token) => {
       state.token = token
-      localStorage.setItem("token",token)
+      localStorage.setItem("token", token)
     },
     SET_USERINFO: (state, userInfo) => {
       state.userInfo = userInfo
-      localStorage.setItem("userInfo",JSON.stringify(userInfo))
+      localStorage.setItem("userInfo", JSON.stringify(userInfo))
     },
     SET_BLOGTYPE: (state, blogType) => {
       state.blogType = blogType
@@ -26,10 +27,14 @@ export default new Vuex.Store({
     SET_MONITOR: (state, monitor) => {
       state.monitor = monitor
     },
+    SET_LIKE: (state, like) =>{
+      state.like = like
+      localStorage.setItem("like", like)
+    },
     REMOVE_INFO: (state) => {
       state.token = ''
-      state.blogType = []
-      state.monitor = []
+      // state.blogType = []
+      // state.monitor = [] 
       state.userInfo = {}
       localStorage.removeItem('token')
       localStorage.removeItem('userInfo')
@@ -45,6 +50,9 @@ export default new Vuex.Store({
     },
     getMonitor: state => {
       return state.monitor
+    },
+    getLike: state => {
+      return state.like
     }
   },
   actions: {},
