@@ -167,36 +167,28 @@ export default{
         this.blog.typeName = blog.typeName
         this.ownBlog = (this.$store.getters.getUser == null ? false : blog.userId == this.$store.getters.getUser.id)
         const like = this.$store.getters.getLike
-        if(like) {
-          for(let i = 0; i < like.length; i++) {
-            if(blog.id == like[i]) {
-              this.likeFalse= false
-              this.color = 'red'
-              break;
-            }
-          }
+        const likeKey = '|' + blog.id + '|blog'
+        if(like.indexOf(likeKey) != -1) {
+          this.likeFalse= false
+          this.color = 'red'
         }
       })
     },
     giveLike(val) {
-      let like = this.$store.getters.getLike == null ? [] : this.$store.getters.getLike
+      let like = this.$store.getters.getLike == null ? '' : this.$store.getters.getLike
       if(this.likeFalse) {
-        like.unshift(val)
-        this.$store.commit('SET_LIKE', like)
+        const newLike = like + '|' + val+ '|blog'
+        this.$store.commit('SET_LIKE', newLike)
         this.color = 'red'
         this.likeFalse = false
         this.$message.success("谢谢你的点赞")
       } else {
-        for(let i = 0; i < like.length; i++) {
-          if(val == like[i]) {
-            like.splice(i,1)
-            this.$store.commit('SET_LIKE', like)
-            this.color = ''
-            this.likeFalse = true
-            this.$message.success("取消点赞")
-            break;
-          }
-        }
+        const likeKey = '|' + val+ '|blog'
+        const newLike = like.replace(likeKey, '')
+        this.$store.commit('SET_LIKE', newLike)
+        this.color = ''
+        this.likeFalse = true
+        this.$message.success("取消点赞")
       }
     },
     collection() {
