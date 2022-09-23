@@ -146,7 +146,7 @@ export default{
     },
     ownBlog: false,
     dialog: false,
-    color: undefined,
+    color: '',
     likeFalse: true
   }),
   mounted() {
@@ -180,7 +180,7 @@ export default{
     },
     giveLike(val) {
       let like = this.$store.getters.getLike == null ? [] : this.$store.getters.getLike
-      if(this.likeFalse && like != [] ) {
+      if(this.likeFalse) {
         like.unshift(val)
         this.$store.commit('SET_LIKE', like)
         this.color = 'red'
