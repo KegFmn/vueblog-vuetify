@@ -166,9 +166,8 @@ export default{
         this.blog.userName = blog.userName
         this.blog.typeName = blog.typeName
         this.ownBlog = (this.$store.getters.getUser == null ? false : blog.userId == this.$store.getters.getUser.id)
-        let like = [];
-        if(this.$store.getters.getLike) {
-          like = this.$store.getters.getLike.split(",")
+        const like = this.$store.getters.getLike
+        if(like) {
           for(let i = 0; i < like.length; i++) {
             if(blog.id == like[i]) {
               this.likeFalse= false
@@ -180,14 +179,10 @@ export default{
       })
     },
     giveLike(val) {
-      let like = [];
-      if(this.$store.getters.getLike) {
-        like = this.$store.getters.getLike.split(",")
-      }
-      if(this.likeFalse) {
+      let like = this.$store.getters.getLike == null ? [] : this.$store.getters.getLike
+      if(this.likeFalse && like != [] ) {
         like.unshift(val)
-        const likeString = like.toString()
-        this.$store.commit('SET_LIKE', likeString)
+        this.$store.commit('SET_LIKE', like)
         this.color = 'red'
         this.likeFalse = false
         this.$message.success("谢谢你的点赞")
@@ -195,8 +190,7 @@ export default{
         for(let i = 0; i < like.length; i++) {
           if(val == like[i]) {
             like.splice(i,1)
-            const likeString = like.toString()
-            this.$store.commit('SET_LIKE', likeString)
+            this.$store.commit('SET_LIKE', like)
             this.color = ''
             this.likeFalse = true
             this.$message.success("取消点赞")
