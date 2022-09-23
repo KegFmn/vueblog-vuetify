@@ -36,23 +36,23 @@
                   <v-list-item-title>KegFmn</v-list-item-title>
                 </v-list-item-content>
 
-                <!-- <v-row
+                <v-row
                   align="center"
                   justify="end"
-                > -->
-                  <!-- <v-icon class="mr-1">
+                >
+                  <v-icon class="mr-1">
                     mdi-heart
-                  </v-icon> -->
+                  </v-icon>
                   <!-- <v-btn icon @click.prevent="giveLike">
                     <v-icon>mdi-heart</v-icon>
                   </v-btn> -->
-                  <!-- <span class="subheading mr-2">256</span> -->
+                  <span class="subheading mr-2">{{blog.likeNumber}}</span>
 
                   <!-- <v-btn icon @click.prevent="copyLink(blog.id)">
                     <v-icon>mdi-share-variant</v-icon>
                   </v-btn> -->
                   <!-- <span class="subheading">45</span> -->
-                <!-- </v-row> -->
+                </v-row>
               </v-list-item>
             </v-card-actions>
           </v-card>

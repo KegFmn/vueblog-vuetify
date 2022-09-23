@@ -113,6 +113,7 @@
 </template>
 
 <script>
+import Fingerprint2 from 'fingerprintjs2'
 export default {
   name: 'AppMain',
   components: { },
@@ -173,6 +174,19 @@ export default {
         const blogType = res.data.data
         this.$store.commit('SET_BLOGTYPE', blogType)
       })
+    },
+    createFingerprint() {
+      Fingerprint2.get((components) => {
+        const values = components.map(function(component,index) {
+          if (index === 0) { //把微信浏览器里UA的wifi或4G等网络替换成空,不然切换网络会ID不一样
+            return component.value.replace(/\bNetType\/\w+\b/, '')
+          }
+          return component.value
+        })
+        // 生成最终id murmur 
+        const murmur = Fingerprint2.x64hash128(values.join(''), 31)
+        this.$store.commit('SET_MURMUR', murmur)
+      })
     }
   },
 
@@ -183,6 +197,7 @@ export default {
     this.addTraffic()
     this.getMonitor()
     this.list()
+    this.createFingerprint()
   }
 }
 </script>

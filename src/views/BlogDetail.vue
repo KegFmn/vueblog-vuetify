@@ -99,10 +99,11 @@
                   </p>
                 </v-col>
                 <v-col cols="6" class="ml-auto d-flex justify-end">
-                  <v-btn icon @click="giveLike(blog.id)" :color="color">
+                  <v-btn icon @click="giveLike(blog.id)" :color="color" class="pt-1">
                     <v-icon>mdi-heart</v-icon>
                   </v-btn>
-                  <v-btn icon class="mr-2" @click="copyLink(blog.id)">
+                  <span class="like">{{blog.likeNumber}}</span>
+                  <v-btn icon class="mr-2 pt-1" @click="copyLink(blog.id)">
                     <v-icon>mdi-share-variant</v-icon>
                   </v-btn>
                 </v-col>
@@ -139,7 +140,8 @@ export default{
       typeName:'',
       created: '',
       updated:'',
-      content: ''
+      content: '',
+      likeNumber: 0
     },
     editor: {
       model: 'preview'
@@ -165,6 +167,7 @@ export default{
         this.blog.content = blog.content
         this.blog.userName = blog.userName
         this.blog.typeName = blog.typeName
+        this.blog.likeNumber = blog.likeNumber
         this.ownBlog = (this.$store.getters.getUser == null ? false : blog.userId == this.$store.getters.getUser.id)
         const like = this.$store.getters.getLike
         const likeKey = '|' + blog.id + '|blog'
@@ -176,23 +179,30 @@ export default{
     },
     giveLike(val) {
       let like = this.$store.getters.getLike == null ? '' : this.$store.getters.getLike
-      if(this.likeFalse) {
-        const newLike = like + '|' + val+ '|blog'
-        this.$store.commit('SET_LIKE', newLike)
-        this.color = 'red'
-        this.likeFalse = false
-        this.$message.success("谢谢你的点赞")
-      } else {
-        const likeKey = '|' + val+ '|blog'
-        const newLike = like.replace(likeKey, '')
-        this.$store.commit('SET_LIKE', newLike)
-        this.color = ''
-        this.likeFalse = true
-        this.$message.success("取消点赞")
+      const likeParam = {
+        userId: this.$store.getters.getMurmur,
+        blogId: val,
+        type: this.likeFalse == true ? 0 : 1
       }
-    },
-    collection() {
-      this.$message.success("谢谢你的收藏")
+      this.$axios.post('/clickLike', likeParam).then(res =>{
+        const blogLike = res.data.data
+        if(blogLike.type == 0) {
+          const newLike = like + '|' + val+ '|blog'
+          this.$store.commit('SET_LIKE', newLike)
+          this.color = 'red'
+          this.likeFalse = false
+          this.blog.likeNumber = blogLike.likeNumber
+          this.$message.success(res.data.msg)
+        } else {
+          const likeKey = '|' + val+ '|blog'
+          const newLike = like.replace(likeKey, '')
+          this.$store.commit('SET_LIKE', newLike)
+          this.color = ''
+          this.likeFalse = true
+          this.blog.likeNumber = blogLike.likeNumber
+          this.$message.success(res.data.msg)
+        }
+      })
     },
     copyLink(val) {
       const url = 'https://www.specialnn.top/#/blog/' + val
@@ -203,11 +213,7 @@ export default{
       })
     },
     blogDele() {
-      this.$axios.post('/blog/delete', this.blog, {
-        headers: {
-          "Authorization": localStorage.getItem("token")
-        }
-      }).then(res =>{
+      this.$axios.post('/blog/delete', this.blog).then(res =>{
         this.getMonitor()
         this.$router.push("/")
         this.$message.success("删除成功")
@@ -235,5 +241,8 @@ export default{
   ::v-deep .v-note-panel .v-note-show .v-show-content{
     padding: 8px 12px 10px 12px;
   }
+}
+.like{
+  padding-top: 8px;
 }
 </style>

@@ -9,7 +9,8 @@ export default new Vuex.Store({
     token: localStorage.getItem("token"),
     like: localStorage.getItem('like'),
     blogType: [],
-    monitor: {}
+    monitor: {},
+    murmur: ''
   },
   mutations: {
     //set
@@ -30,6 +31,9 @@ export default new Vuex.Store({
     },
     SET_MONITOR: (state, monitor) => {
       state.monitor = monitor
+    },
+    SET_MURMUR: (state, murmur) => {
+      state.murmur = murmur
     },
     REMOVE_INFO: (state) => {
       state.token = ''
@@ -53,6 +57,9 @@ export default new Vuex.Store({
     },
     getLike: state => {
       return state.like
+    },
+    getMurmur: state => {
+      return state.murmur
     }
   },
   actions: {},
