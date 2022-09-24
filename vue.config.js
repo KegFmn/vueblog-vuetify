@@ -29,6 +29,8 @@ let cdn = {
     'https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.min.js',
     // vutify
     'https://cdn.bootcdn.net/ajax/libs/vuetify/2.6.1/vuetify.min.js',
+    // fingerprint2
+    'https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.4/fingerprint2.min.js',
     // vue-clipboard
     'https://cdn.bootcdn.net/ajax/libs/vue-clipboard2/0.3.3/vue-clipboard.min.js',
     // gitalk
@@ -134,6 +136,7 @@ module.exports = {
         'vuex': 'Vuex',
         'vue-router': 'VueRouter',
         'vuetify': 'Vuetify',
+        'fingerprintjs2': 'Fingerprint2',
         'axios': 'axios',
         'vue-clipboard2': 'VueClipboard',
         'gitalk': 'Gitalk',
