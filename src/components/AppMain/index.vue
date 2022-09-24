@@ -194,10 +194,10 @@ export default {
     
   },
   created() {
+    this.createFingerprint()
     this.addTraffic()
     this.getMonitor()
     this.list()
-    this.createFingerprint()
   }
 }
 </script>
