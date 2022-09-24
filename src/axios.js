@@ -17,6 +17,7 @@ axios.interceptors.request.use(config =>{
   if(localStorage.getItem("token")) {
     config.headers.Authorization=localStorage.getItem("token");
   }
+  config.headers['fingerprint'] = store.getters.getMurmur
   return config
 })
 
@@ -41,7 +42,7 @@ axios.interceptors.response.use(response =>{
       setTimeout(()=>{
         store.commit("REMOVE_INFO")
         router.push("/login")
-      }, 500);
+      }, 1000);
     }
     Message.error(error.message)
     return Promise.reject(error)
