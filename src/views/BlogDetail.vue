@@ -180,7 +180,6 @@ export default{
     giveLike(val) {
       let like = this.$store.getters.getLike == null ? '' : this.$store.getters.getLike
       const likeParam = {
-        userId: this.$store.getters.getMurmur,
         blogId: val,
         type: this.likeFalse == true ? 0 : 1
       }
