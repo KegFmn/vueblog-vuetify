@@ -180,9 +180,9 @@ export default {
     
   },
   created() {
-    this.addTraffic()
-    this.getMonitor()
     this.list()
+    this.getMonitor()
+    this.addTraffic()
   }
 }
 </script>
