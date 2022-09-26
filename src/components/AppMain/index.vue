@@ -27,20 +27,6 @@
 
                       <span class="font-weight-medium text-no-wrap">{{ monitor.visitTotal }}</span>
                     </v-list-item>
-                    
-                    <v-list-item link>
-                      <v-list-item-icon>
-                        <v-icon>mdi-post-outline</v-icon>
-                      </v-list-item-icon>
-
-                      <v-list-item-content>
-                        <v-list-item-title>
-                          博客
-                        </v-list-item-title>
-                      </v-list-item-content>
-
-                      <span class="font-weight-medium text-no-wrap">{{ monitor.blogTotal }}</span>
-                    </v-list-item>
 
                     <v-list-item link>
                       <v-list-item-icon>
@@ -54,6 +40,20 @@
                       </v-list-item-content>
 
                       <span class="font-weight-medium text-no-wrap">{{ monitor.likeTotal }}</span>
+                    </v-list-item>
+                    
+                    <v-list-item link>
+                      <v-list-item-icon>
+                        <v-icon>mdi-post-outline</v-icon>
+                      </v-list-item-icon>
+
+                      <v-list-item-content>
+                        <v-list-item-title>
+                          博客
+                        </v-list-item-title>
+                      </v-list-item-content>
+
+                      <span class="font-weight-medium text-no-wrap">{{ monitor.blogTotal }}</span>
                     </v-list-item>
 
                     <v-list-item link>
