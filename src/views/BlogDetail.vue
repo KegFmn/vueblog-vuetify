@@ -171,9 +171,11 @@ export default{
         this.ownBlog = (this.$store.getters.getUser == null ? false : blog.userId == this.$store.getters.getUser.id)
         const like = this.$store.getters.getLike
         const likeKey = '|' + blog.id + '|blog'
-        if(like.indexOf(likeKey) != -1) {
-          this.likeFalse= false
-          this.color = 'red'
+        if(like) {
+          if(like.indexOf(likeKey) != -1) {
+            this.likeFalse= false
+            this.color = 'red'
+          }
         }
       })
     },
@@ -201,6 +203,7 @@ export default{
           this.blog.likeNumber = blogLike.likeNumber
           this.$message.success(res.data.msg)
         }
+        this.getMonitor()
       })
     },
     copyLink(val) {
