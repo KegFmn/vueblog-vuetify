@@ -186,13 +186,13 @@ export default{
         type: this.likeFalse == true ? 0 : 1
       }
       this.$axios.post('/clickLike', likeParam).then(res =>{
-        const blogLike = res.data.data
-        if(blogLike.type == 0) {
+        const type = res.data.data
+        if(type == 0) {
           const newLike = like + '|' + val+ '|blog'
           this.$store.commit('SET_LIKE', newLike)
           this.color = 'red'
           this.likeFalse = false
-          this.blog.likeNumber = blogLike.likeNumber
+          this.blog.likeNumber = this.blog.likeNumber + 1
           this.$message.success(res.data.msg)
         } else {
           const likeKey = '|' + val+ '|blog'
@@ -200,7 +200,7 @@ export default{
           this.$store.commit('SET_LIKE', newLike)
           this.color = ''
           this.likeFalse = true
-          this.blog.likeNumber = blogLike.likeNumber
+          this.blog.likeNumber = this.blog.likeNumber - 1
           this.$message.success(res.data.msg)
         }
         this.getMonitor()
