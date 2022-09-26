@@ -15,9 +15,11 @@ axios.defaults.baseURL= '/api'
 //前置拦截
 axios.interceptors.request.use(config =>{
   if(localStorage.getItem("token")) {
-    config.headers.Authorization=localStorage.getItem("token");
+    config.headers.Authorization = localStorage.getItem("token");
   }
-  config.headers['fingerprint'] = store.getters.getMurmur
+  if(store.getters.getMurmur) {
+    config.headers['fingerprint'] = store.getters.getMurmur
+  }
   return config
 })
 
@@ -32,8 +34,7 @@ axios.interceptors.response.use(response =>{
     Message.error(response.data.msg)
     return Promise.reject(response.data.msg)
   }
-},
-  error =>{
+},error =>{
     if(error.response.data){
       error.message = error.response.data.msg
     }
