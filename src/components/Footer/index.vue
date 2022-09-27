@@ -1,6 +1,6 @@
 <template>
   <v-footer
-    class="pt-8"
+    class="pt-10"
     color="grey lighten-4"
     padless
   >
