@@ -110,6 +110,7 @@
         <!-- 内容 -->
         <v-col :cols="viewCols" :offset="viewOffset">
           <v-sheet
+              color="grey lighten-4"
               min-height="85vh"
               rounded="xl"
             >
