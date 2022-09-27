@@ -110,7 +110,7 @@
         <!-- 内容 -->
         <v-col :cols="viewCols" :offset="viewOffset">
           <v-sheet
-              color="grey lighten-4"
+              :color="color"
               min-height="85vh"
               rounded="xl"
             >
@@ -135,6 +135,9 @@ export default {
     
   }),
   computed: {
+    color() {
+      return this.$route.path == '/blogs' ? 'grey lighten-4' : ''
+    }
     key() {
       return this.$route.path
     },
