@@ -3,7 +3,7 @@
     <v-col cols="24">
       <!-- 循环博客卡片 -->
       <v-row v-for="(blog,index) in blogs" :key="index" align="start">
-        <v-col>
+        <v-col  :class="[index == 0 ? 'pt-0' : '']">
           <v-card
             link
             rounded="xl"
