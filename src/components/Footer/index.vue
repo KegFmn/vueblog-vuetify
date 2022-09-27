@@ -10,7 +10,7 @@
       no-gutters
     >
       <v-col
-        class="grey lighten-4 py-4 block--text text-center"
+        class="grey lighten-4 py-2 block--text text-center"
         :cols="footerCols"
       > 
         <v-btn icon class="pb-1">
@@ -20,7 +20,7 @@
       </v-col>
 
       <v-col
-        class="grey lighten-4 py-4 text-center"
+        class="grey lighten-4 py-2 text-center"
         :cols="footerCols"
       >
         <v-btn icon class="pb-1">
@@ -30,7 +30,7 @@
       </v-col>
 
       <v-col
-        class="grey lighten-4 py-4 block--text text-center"
+        class="grey lighten-4 py-2 block--text text-center"
         :cols="footerCols"
       >
         <!-- <v-btn icon class="pb-1">
