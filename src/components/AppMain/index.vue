@@ -137,7 +137,7 @@ export default {
   computed: {
     color() {
       return this.$route.path == '/blogs' ? 'grey lighten-4' : ''
-    }
+    },
     key() {
       return this.$route.path
     },
