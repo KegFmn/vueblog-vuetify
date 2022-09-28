@@ -28,7 +28,6 @@
           v-model="keyword"
           append-icon="mdi-magnify"
           clear-icon="mdi-close-circle"
-          @keyup.enter.native="search"
           @input="search"
           @click:append="search"
           @click:clear="clearKeyword"
@@ -298,6 +297,8 @@ export default {
       console.log('点击');
       if(this.keyword != ''){
         this.$router.push({name:'Search',params: {keyword: this.keyword}})
+      } else {
+        this.$router.push("/blogs")
       }
     },
     clearKeyword () {
