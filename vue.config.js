@@ -18,17 +18,17 @@ let cdn = {
   ],
   js: [
     // vue
-    'https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/vue/2.7.10/vue.min.js',
     // axios
     'https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.min.js',
     // vuex
     'https://cdn.bootcdn.net/ajax/libs/vuex/3.6.2/vuex.min.js',
     // vue-router js
-    'https://cdn.bootcdn.net/ajax/libs/vue-router/3.5.3/vue-router.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/vue-router/3.6.5/vue-router.min.js',
     // axios
     'https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.min.js',
     // vutify
-    'https://cdn.bootcdn.net/ajax/libs/vuetify/2.6.1/vuetify.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/vuetify/2.6.10/vuetify.min.js',
     // fingerprint2
     'https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.4/fingerprint2.min.js',
     // vue-clipboard
