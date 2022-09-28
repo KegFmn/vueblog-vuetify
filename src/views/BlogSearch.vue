@@ -40,13 +40,13 @@
                   align="center"
                   justify="end"
                 >
-                  <v-icon class="mr-1">
+                  <!-- <v-icon class="mr-1">
                     mdi-heart
-                  </v-icon>
+                  </v-icon> -->
                   <!-- <v-btn icon @click.prevent="giveLike">
                     <v-icon>mdi-heart</v-icon>
                   </v-btn> -->
-                  <span class="subheading mr-2">{{blog.likeNumber}}</span>
+                  <!-- <span class="subheading mr-2">{{blog.likeNumber}}</span> -->
 
                   <!-- <v-btn icon @click.prevent="copyLink(blog.id)">
                     <v-icon>mdi-share-variant</v-icon>
@@ -115,20 +115,6 @@ export default {
         this.pageSize = res.data.data.pageable.pageSize
         this.total = res.data.data.totalElements
         this.length = res.data.data.totalPages
-      })
-    },
-    giveLike() {
-      this.$message.success("谢谢你的点赞")
-    },
-    collection() {
-      this.$message.success("谢谢你的收藏")
-    },
-    copyLink(val) {
-      const url = window.PLATFROM_CONFIG.baseURL + '/#/blog/' + val
-      this.$copyText(url).then(() => {
-        this.$message.success("复制成功，快去分享给别人吧")
-      }).catch(err => {
-        this.$message.error("复制失败")
       })
     }
   },
