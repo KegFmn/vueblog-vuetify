@@ -28,8 +28,9 @@
           v-model="keyword"
           append-icon="mdi-magnify"
           clear-icon="mdi-close-circle"
-          @keydown="enter"
-          @click:append="clickIcon"
+          @keyup.enter.native="search"
+          @input="search"
+          @click:append="search"
           @click:clear="clearKeyword"
         ></v-text-field>
       </v-responsive>
@@ -293,14 +294,8 @@ export default {
         this.$router.push("/login")
       })
     },
-    clickIcon() {
+    search() {
       console.log('点击');
-      if(this.keyword != ''){
-        this.$router.push({name:'Search',params: {keyword: this.keyword}})
-      }
-    },
-    enter() {
-      console.log('键盘');
       if(this.keyword != ''){
         this.$router.push({name:'Search',params: {keyword: this.keyword}})
       }
