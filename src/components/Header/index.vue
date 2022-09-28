@@ -296,8 +296,6 @@ export default {
       console.log('点击');
       if(this.keyword != ''){
         this.$router.push({name:'Search',params: {keyword: this.keyword}})
-      } else {
-        this.$router.push("/blogs")
       }
     },
     clearKeyword () {
