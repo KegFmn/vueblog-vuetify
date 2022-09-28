@@ -283,7 +283,6 @@ export default {
     ],
     hasLogin: false,
     drawer: false,
-    keyword: ''，
     keyword: ''
   }),
   methods: {
