@@ -28,7 +28,6 @@
           v-model="keyword"
           append-icon="mdi-magnify"
           clear-icon="mdi-close-circle"
-          @input="search"
           @click:append="search"
           @click:clear="clearKeyword"
         ></v-text-field>
@@ -284,6 +283,7 @@ export default {
     ],
     hasLogin: false,
     drawer: false,
+    keyword: ''，
     keyword: ''
   }),
   methods: {
@@ -304,6 +304,12 @@ export default {
     clearKeyword () {
       console.log('清除');
       this.keyword = ''
+    },
+    keyDown(e){
+      //如果是回车则执行登录方法
+      if(e.keyCode == 13){
+        this.search();
+      }
     }
   },
   mounted() {
@@ -313,6 +319,10 @@ export default {
       this.user.email = this.$store.getters.getUser.email
       this.hasLogin = true
     }
+    window.addEventListener('keydown', this.keyDown)
+  },
+  beforeDestroy () {
+    window.removeEventListener('keydown', this.keyDown, false);
   }
 }
 </script>
