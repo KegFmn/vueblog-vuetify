@@ -178,29 +178,25 @@ export default {
 
   methods: {
     getMonitor() {
-      this.$axios.get('/monitor').then(res =>{
-        const monitorData = res.data.data
-        this.$store.commit('SET_MONITOR', monitorData)
-      })
+      return this.$axios.get('/monitor')
     },
     addTraffic() {
-      this.$axios.get('/monitor/addVisitTotal')
+      return this.$axios.get('/monitor/addVisitTotal')
     },
     list() {
-      this.$axios.get('/types').then(res =>{
-        const blogType = res.data.data
+      return this.$axios.get('/types')
+    },
+    getData() {
+      this.$axios.all([this.list(), this.getMonitor(), this.addTraffic()]).then(this.$axios.spread((res1, res2, res3) =>{
+        const blogType = res1.data.data
+        const monitorData = res2.data.data
         this.$store.commit('SET_BLOGTYPE', blogType)
-      })
+        this.$store.commit('SET_MONITOR', monitorData)
+      }))
     }
   },
-
-  mounted() {
-    
-  },
   created() {
-    this.list()
-    this.getMonitor()
-    this.addTraffic()
+    this.getData()
   }
 }
 </script>
