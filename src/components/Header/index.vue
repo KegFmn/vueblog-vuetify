@@ -28,8 +28,7 @@
           v-model="keyword"
           append-icon="mdi-magnify"
           clear-icon="mdi-close-circle"
-          @change="enter"
-          @input="input"
+          @keydown="enter"
           @click:append="clickIcon"
           @click:clear="clearKeyword"
         ></v-text-field>
@@ -305,9 +304,6 @@ export default {
       if(this.keyword != ''){
         this.$router.push({name:'Search',params: {keyword: this.keyword}})
       }
-    },
-    input() {
-      console.log('输入');
     },
     clearKeyword () {
       console.log('清除');
