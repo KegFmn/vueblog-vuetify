@@ -16,23 +16,34 @@ const routes = [
         path: '/blogs',
         name: 'Blogs',
         component: () => import('@/views/Blogs.vue'),
+        meta: {
+          title: 'Special Blog'
+        }
       },
       {
         path: '/type/:typeId',
         name: 'Type',
         component: () => import('@/views/Blogs.vue'),
+        meta: {
+          title: 'Special Blog'
+        }
       },
       {
         path: '/search/:keyword',
         name: 'Search',
         component: () => import('@/views/BlogSearch.vue'),
+        meta: {
+          title: 'Blog Search'
+        }
       },
       {
         path: '/blog/add',
         name: 'BlogAdd',
         component: () => import('@/views/BlogEdit.vue'),
-        meta: {//是否需要权限
-          requireAuth: true
+        meta: {
+          //是否需要权限
+          requireAuth: true,
+          title: 'Blog Add'
         }
       },
       {
@@ -40,30 +51,43 @@ const routes = [
         name: 'BlogEdit',
         component: () => import('@/views/BlogEdit.vue'),
         meta: {//是否需要权限
-          requireAuth: true
+          requireAuth: true,
+          title: 'Blog Edit'
         }
       },
       {
         path: '/blog/:blogId',
         name: 'BlogDetail',
-        component: () => import('@/views/BlogDetail.vue')
+        component: () => import('@/views/BlogDetail.vue'),
+        meta: {
+          title: 'Blog Detail'
+        }
       },
       {
         path: '/blogGuest',
         name: 'BlogGuest',
-        component: () => import('@/views/BlogGuest.vue')
+        component: () => import('@/views/BlogGuest.vue'),
+        meta: {
+          title: 'Blog Guest'
+        }
       },
       {
         path: '/blogLink',
         name: 'BlogLink',
-        component: () => import('@/views/BlogLink.vue')
+        component: () => import('@/views/BlogLink.vue'),
+        meta: {
+          title: 'Blog Link'
+        }
       },
     ]
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/Login.vue')
+    component: () => import('@/views/Login.vue'),
+    meta: {
+      title: 'Login Blog'
+    }
   }
 ]
 
