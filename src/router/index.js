@@ -33,7 +33,7 @@ const routes = [
         name: 'Search',
         component: () => import('@/views/BlogSearch.vue'),
         meta: {
-          title: 'Blog Search'
+          title: 'Search Blog'
         }
       },
       {
@@ -43,7 +43,7 @@ const routes = [
         meta: {
           //是否需要权限
           requireAuth: true,
-          title: 'Blog Add'
+          title: 'Add Blog'
         }
       },
       {
@@ -52,7 +52,7 @@ const routes = [
         component: () => import('@/views/BlogEdit.vue'),
         meta: {//是否需要权限
           requireAuth: true,
-          title: 'Blog Edit'
+          title: 'Edit Blog'
         }
       },
       {
