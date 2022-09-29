@@ -12,7 +12,7 @@
         class="d-md-flex d-lg-none"
       ></v-app-bar-nav-icon>
 
-      <v-toolbar-title class="mb-0 font-weight-black text-lg-h5 d-none d-lg-flex justify-end">MyBlog</v-toolbar-title>
+      <v-toolbar-title class="mb-0 font-weight-black text-lg-h5 d-none d-lg-flex justify-end">Special Blog</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
