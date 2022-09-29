@@ -147,34 +147,38 @@ module.exports = {
     }
 
     const plugins = [];
-
-    plugins.push(
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          output: {
-            comments: false, // 去掉注释
+    if (isProd) {
+      plugins.push(
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            output: {
+              comments: false, // 去掉注释
+            },
+            compress: {
+              drop_console: true,
+              drop_debugger: false,
+              pure_funcs: ['console.log']//移除console
+            },
+            warnings: false
           },
-          compress: {
-            drop_console: true,
-            drop_debugger: false,
-            pure_funcs: ['console.log']//移除console
-          },
-          warnings: false
-        },
-        sourceMap: false,
-        parallel: true
-      })
-    )
+          sourceMap: false,
+          parallel: true
+        })
+      )
+      
+      const gzipExtList = ['css', 'js'];
     
-    plugins.push(
-      new CompressionWebpackPlugin({
-          algorithm: 'gzip',
-          test: /\.(html|js|css)$/,// 匹配文件名
-          threshold: 10240, // 对超过10k的数据压缩
-          deleteOriginalAssets: false, // 删除源文件
-          minRatio: 0.8 // 压缩比
-      })
-    )
+      plugins.push(
+        new CompressionWebpackPlugin({
+            filename: "[path].gz[query]", // 默认值
+            algorithm: "gzip", // 默认值
+            test: new RegExp(`.(${gzipExtList.join('|')})$`),
+            threshold: 10240, // 只有体积大于 10KB 的资源会被处理（默认值为 0）
+            minRatio: 0.8, // 默认值，只有压缩率优于 0.8 的资源才会被处理（Compressed Size / Original Size）
+            deleteOriginalAssets: false // 是否删除原文件（默认值为 false）
+        })
+      )
+    }
 
     return { plugins }
   }
