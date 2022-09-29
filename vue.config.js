@@ -113,6 +113,7 @@ module.exports = {
       // 生产环境注入cdn
       config.plugin('html')
           .tap(args => {
+              args[0].title = 'Special Blog';
               args[0].cdn = cdn;
               return args;
           });
