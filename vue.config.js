@@ -113,7 +113,6 @@ module.exports = {
       // 生产环境注入cdn
       config.plugin('html')
           .tap(args => {
-              args[0].title= 'MyBlog',
               args[0].cdn = cdn;
               return args;
           });
@@ -128,8 +127,10 @@ module.exports = {
   },
 
   configureWebpack: config => {
+    const plugins = [];
     
     if (isProd) {
+      
       // 用cdn方式引入
       config.externals = {
         'vue': 'Vue',
@@ -144,30 +145,26 @@ module.exports = {
         // '@kangc/v-md-editor/lib/theme/vuepress': 'VMdTheme',
         // 'prismjs': 'Prism'
       }
-    }
-
-    const plugins = [];
-    if (isProd) {
+      
       plugins.push(
         new UglifyJsPlugin({
-          uglifyOptions: {
-            output: {
-              comments: false, // 去掉注释
+            uglifyOptions: {
+              output: {
+                comments: false, // 去掉注释
+              },
+              compress: {
+                drop_console: true,
+                drop_debugger: false,
+                pure_funcs: ['console.log']//移除console
+              },
+              warnings: false
             },
-            compress: {
-              drop_console: true,
-              drop_debugger: false,
-              pure_funcs: ['console.log']//移除console
-            },
-            warnings: false
-          },
-          sourceMap: false,
-          parallel: true
+            sourceMap: false,
+            parallel: true
         })
       )
       
       const gzipExtList = ['css', 'js'];
-    
       plugins.push(
         new CompressionWebpackPlugin({
             filename: "[path].gz[query]", // 默认值
@@ -179,7 +176,6 @@ module.exports = {
         })
       )
     }
-
     return { plugins }
   }
 }
