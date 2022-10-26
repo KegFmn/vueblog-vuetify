@@ -136,7 +136,7 @@ export default {
   }),
   computed: {
     color() {
-      return this.$route.name == 'Blogs' || this.$route.name == 'Type' ? 'grey lighten-4' : ''
+      return this.$route.name == 'Blogs' || this.$route.name == 'Type' || this.$route.name == 'Search' ? 'grey lighten-4' : ''
     },
     key() {
       return this.$route.path
