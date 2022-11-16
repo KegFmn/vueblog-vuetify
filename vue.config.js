@@ -30,13 +30,13 @@ let cdn = {
     // vutify
     'https://cdn.bootcdn.net/ajax/libs/vuetify/2.6.10/vuetify.min.js',
     // fingerprint2
-    'https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.4/fingerprint2.min.js',
+    //'https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.4/fingerprint2.min.js',
     // vue-clipboard
     'https://cdn.bootcdn.net/ajax/libs/vue-clipboard2/0.3.3/vue-clipboard.min.js',
     // gitalk
     'https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.js',
     // v-md-editor
-    'https://unpkg.com/@kangc/v-md-editor@1.7.11/lib/base-editor.js',
+    //'https://unpkg.com/@kangc/v-md-editor@1.7.11/lib/base-editor.js',
     // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/theme/vuepress.js',
     // prism
     // 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js'
@@ -137,11 +137,11 @@ module.exports = {
         'vuex': 'Vuex',
         'vue-router': 'VueRouter',
         'vuetify': 'Vuetify',
-        'fingerprintjs2': 'Fingerprint2',
+        // 'fingerprintjs2': 'Fingerprint2',
         'axios': 'axios',
         'vue-clipboard2': 'VueClipboard',
         'gitalk': 'Gitalk',
-        '@kangc/v-md-editor': 'VMdEditor',
+        // '@kangc/v-md-editor': 'VMdEditor',
         // '@kangc/v-md-editor/lib/theme/vuepress': 'VMdTheme',
         // 'prismjs': 'Prism'
       }
