@@ -6,15 +6,11 @@ const isProd = process.env.NODE_ENV === 'production' // 是否生产环境
 let cdn = {
   css: [
     // vuetify
-    // 'https://cdn.bootcdn.net/ajax/libs/vuetify/2.4.0/vuetify.min.css',
+    'https://cdn.staticfile.org/vuetify/2.6.10/vuetify.min.css',
+    'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900',
+    'https://cdn.staticfile.org/MaterialDesign-Webfont/4.9.95/css/materialdesignicons.min.css',
     // gitalk
-    // 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css',
-    // v-md-editor
-    // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/style/base-editor.css',
-    // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/theme/style/vuepress.css',
-    // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/plugins/copy-code/copy-code.css',
-    // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/plugins/emoji/emoji.css',
-    // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/plugins/todo-list/todo-list.css'
+    'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css'
   ],
   js: [
     // vue
@@ -23,23 +19,16 @@ let cdn = {
     'https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.min.js',
     // vuex
     'https://cdn.bootcdn.net/ajax/libs/vuex/3.6.2/vuex.min.js',
-    // vue-router js
+    // vue-router
     'https://cdn.bootcdn.net/ajax/libs/vue-router/3.6.5/vue-router.min.js',
-    // axios
-    'https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.min.js',
     // vutify
-    'https://cdn.bootcdn.net/ajax/libs/vuetify/2.6.10/vuetify.min.js',
+    'https://cdn.staticfile.org/vuetify/2.6.10/vuetify.min.js',
     // fingerprint2
     'https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.4/fingerprint2.min.js',
-    // vue-clipboard
-    'https://cdn.bootcdn.net/ajax/libs/vue-clipboard2/0.3.3/vue-clipboard.min.js',
+    // vditor
+    // 'https://unpkg.com/vditor@3.9.3',
     // gitalk
-    'https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.js',
-    // v-md-editor
-    'https://unpkg.com/@kangc/v-md-editor@1.7.11/lib/base-editor.js',
-    // 'https://cdn.jsdelivr.net/npm/@kangc/v-md-editor@1.7.11/lib/theme/vuepress.js',
-    // prism
-    // 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js'
+    'https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.js'
   ]
 }
 
@@ -71,7 +60,6 @@ module.exports = {
   },
 
   chainWebpack: config => {
-
     if (isProd) {
       // 删除预加载
       config.plugins.delete('preload');
@@ -135,15 +123,12 @@ module.exports = {
       config.externals = {
         'vue': 'Vue',
         'vuex': 'Vuex',
+        'axios': 'axios',
         'vue-router': 'VueRouter',
         'vuetify': 'Vuetify',
         'fingerprintjs2': 'Fingerprint2',
-        'axios': 'axios',
-        'vue-clipboard2': 'VueClipboard',
-        'gitalk': 'Gitalk',
-        '@kangc/v-md-editor': 'VMdEditor',
-        // '@kangc/v-md-editor/lib/theme/vuepress': 'VMdTheme',
-        // 'prismjs': 'Prism'
+        // 'vditor': 'Vditor',
+        'gitalk': 'Gitalk'
       }
       
       plugins.push(

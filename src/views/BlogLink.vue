@@ -77,16 +77,9 @@ export default {
           title: 'CSDN',
           artist: '专业开发者社区',
         },
-        {
-          color: '#67686a',
-          href: 'http://119.91.142.29:8989/',
-          avatar: 'http://tong-img.oss-cn-guangzhou.aliyuncs.com/blog-img/logo.png',
-          title: 'Tong',
-          artist: '大佬',
-        },
       ],
   }),
-
+  
   mounted() {
     
   },

@@ -2,13 +2,24 @@
   <v-main class="grey lighten-4 mt-2">
     <v-container fluid>
       <v-row no-gutters>
-        
-        <v-spacer></v-spacer>
+
+        <!-- 内容 -->
+        <v-col :cols="viewCols" :offset="viewOffset">
+          <v-sheet
+              :color="color"
+              min-height="85vh"
+              rounded="xl"
+            >
+            <v-container fluid>
+              <router-view :key="key"/>
+            </v-container>
+          </v-sheet>
+        </v-col>
 
         <v-col :cols="asideCols" class="left-aside d-none d-lg-flex">
           <v-row>
             <!-- 网站监控 -->
-            <v-col cols="24">
+            <v-col cols="12">
               <v-sheet rounded="xl" width="100%">
                 <v-list color="transparent" rounded disabled>
                   <v-list-item-group
@@ -76,7 +87,7 @@
             </v-col>
 
             <!-- 侧边栏 -->
-            <v-col cols="24">
+            <v-col cols="12">
               <v-sheet rounded="xl" width="100%">
                 <v-list color="transparent" rounded>
                   <v-list-item-group
@@ -106,21 +117,6 @@
             </v-col>
           </v-row>
         </v-col>
-
-        <!-- 内容 -->
-        <v-col :cols="viewCols" :offset="viewOffset">
-          <v-sheet
-              :color="color"
-              min-height="85vh"
-              rounded="xl"
-            >
-            <v-container fluid>
-              <router-view :key="key"/>
-            </v-container>
-          </v-sheet>
-        </v-col>
-
-        <v-spacer></v-spacer>
 
       </v-row>
     </v-container>
@@ -162,7 +158,7 @@ export default {
         case 'sm': return 12
         case 'md': return 12
         case 'lg': return 12
-        case 'xl': return 8
+        case 'xl': return 7
       }
     },
     viewOffset () {
@@ -180,14 +176,11 @@ export default {
     getMonitor() {
       return this.$axios.get('/monitor')
     },
-    addTraffic() {
-      return this.$axios.get('/monitor/addVisitTotal')
-    },
     list() {
       return this.$axios.get('/types')
     },
     getData() {
-      this.$axios.all([this.list(), this.getMonitor(), this.addTraffic()]).then(this.$axios.spread((res1, res2, res3) =>{
+      this.$axios.all([this.list(), this.getMonitor()]).then(this.$axios.spread((res1, res2) =>{
         const blogType = res1.data.data
         const monitorData = res2.data.data
         this.$store.commit('SET_BLOGTYPE', blogType)
@@ -202,8 +195,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.left-aside{
-  position: fixed;
-  left: 7%;
-}
+  .left-aside{
+    position: fixed;
+    right: 7%;
+  }
 </style>

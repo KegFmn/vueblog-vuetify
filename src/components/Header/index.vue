@@ -16,21 +16,37 @@
 
       <v-spacer></v-spacer>
 
-      <v-responsive max-width="600">
-        <v-text-field
-          dense
-          flat
-          counter
-          rounded
-          clearable
-          hide-details
-          solo-inverted
-          v-model="keyword"
-          append-icon="mdi-magnify"
-          clear-icon="mdi-close-circle"
-          @click:append="search"
-          @click:clear="clearKeyword"
-        ></v-text-field>
+      <v-responsive max-width="600" height="40">
+        <div v-on:keyup.enter="search">
+          <v-menu offset-y rounded="xl">
+            <template v-slot:activator="{ on }">
+              <v-text-field
+                solo
+                dense
+                rounded
+                clearable
+                hide-details
+                solo-inverted
+                append-icon="mdi-magnify"
+                v-model="keyword"
+                class="input-search"
+                autocomplete="off"
+                v-on="on"
+                ref="search"
+                @click:append="search"
+                @click:clear="clearKeyword"
+              ></v-text-field>
+            </template>
+            <v-list v-show="items.length > 0" max-width="600" rounded>
+              <v-list-item v-for="(item, index) in items" :key="index" @click="itemClick(item)" two-line>
+                <v-list-item-content>
+                  <v-list-item-title>{{ item.title }}</v-list-item-title>
+                  <v-list-item-subtitle>{{ item.description }}</v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </div>
       </v-responsive>
 
       <v-row class="d-none d-lg-flex justify-end">
@@ -269,6 +285,9 @@ export default {
       return this.$store.getters.getMonitor
     },
   },
+  watch: {
+    keyword: 'inputHandle'
+  },
   data: () => ({
     user:{
       userName: '请先登录',
@@ -283,30 +302,51 @@ export default {
     ],
     hasLogin: false,
     drawer: false,
-    keyword: ''
+    showSelect: true,
+    keyword: '',
+    items: [],
+    currentPage: 1,
+    pageSize: 5
   }),
   methods: {
     logout() {
-      this.$axios.get('/logout').then(res =>{
-        this.$store.commit("REMOVE_INFO")
-        this.$router.push("/login")
+      this.$store.commit("REMOVE_INFO")
+      this.$router.push("/login")
+    },
+    itemClick (item) {
+      this.$refs.search.blur()
+      this.$router.push({name:'BlogDetail',params: {blogId: item.id}})
+    },
+    inputHandle (keyword) {
+      if (keyword != undefined && keyword.trim() !== '') {
+        this.showSelect = true
+        setTimeout(() => {
+          this.getEntity()
+        }, 250)
+      }
+    },
+    getEntity () {
+      const params = {
+        currentPage: this.currentPage,
+        pageSize: this.pageSize,
+        q: this.keyword
+      }
+      this.$axios.get('/search', {params} ).then(res =>{
+        this.items = res.data.data.content
+        console.log(this.items);
       })
     },
-    search() {
-      console.log('点击');
-      if(this.keyword != ''){
+    search () {
+      this.$refs.search.blur()
+      if(this.keyword != undefined && this.keyword != ''){
         this.$router.push({name:'Search',params: {keyword: this.keyword}})
+      } else{
+        this.$router.push("/")
       }
     },
     clearKeyword () {
-      console.log('清除');
+      this.items = []
       this.keyword = ''
-    },
-    keyDown(e){
-      //如果是回车则执行登录方法
-      if(e.keyCode == 13){
-        this.search();
-      }
     }
   },
   mounted() {
@@ -316,16 +356,13 @@ export default {
       this.user.email = this.$store.getters.getUser.email
       this.hasLogin = true
     }
-    window.addEventListener('keydown', this.keyDown)
-  },
-  beforeDestroy () {
-    window.removeEventListener('keydown', this.keyDown, false);
+
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.v-application--is-ltr .v-list-item__avatar:first-child{
-  margin-right: 0px;
-}
+  .v-application--is-ltr .v-list-item__avatar:first-child{
+    margin-right: 0px;
+  }
 </style>

@@ -43,15 +43,7 @@
                   <v-icon class="mr-1">
                     mdi-heart
                   </v-icon>
-                  <!-- <v-btn icon @click.prevent="giveLike">
-                    <v-icon>mdi-heart</v-icon>
-                  </v-btn> -->
                   <span class="subheading mr-2">{{blog.likeNumber}}</span>
-
-                  <!-- <v-btn icon @click.prevent="copyLink(blog.id)">
-                    <v-icon>mdi-share-variant</v-icon>
-                  </v-btn> -->
-                  <!-- <span class="subheading">45</span> -->
                 </v-row>
               </v-list-item>
             </v-card-actions>
@@ -139,7 +131,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.blog-title {
-  color: #000;
-}
+  .blog-title {
+    color: #000;
+  }
 </style>

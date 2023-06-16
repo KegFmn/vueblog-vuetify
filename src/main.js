@@ -5,13 +5,10 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import axios from 'axios'
 import Message from './components/Message/index.js'
-import VueClipboard from 'vue-clipboard2'
 import Fingerprint2 from 'fingerprintjs2'
 
 import "./axios"
 import './permission'
-
-Vue.use(VueClipboard)
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios

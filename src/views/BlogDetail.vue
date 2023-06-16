@@ -116,10 +116,11 @@
         <!-- 博客内容 -->
         <v-row align="end">
           <v-col>
-            <mdEditor
+            <!-- <mdEditor
               v-model="blog.content"
               :model="editor.model"
-            />
+            /> -->
+            <vditor v-model="blog.content"></vditor>
           </v-col>
         </v-row>
     </v-sheet>
@@ -127,10 +128,11 @@
 </template>
 
 <script>
-import mdEditor from '../components/VMdEditor/index.vue'
+import vditor from '../components/Vditor/view.vue'
+// import mdEditor from '../components/VMdEditor/index.vue'
 export default{
   name: 'BlogDetail',
-  components: { mdEditor },
+  components: { vditor },
   data: () =>({
     blog: {
       id: '',
@@ -142,9 +144,6 @@ export default{
       updated:'',
       content: '',
       likeNumber: 0
-    },
-    editor: {
-      model: 'preview'
     },
     ownBlog: false,
     dialog: false,

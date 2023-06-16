@@ -38,10 +38,11 @@
         </v-col>
 
         <v-col :cols="contentCols">
-          <mdEditor
+          <!-- <mdEditor
             v-model="ruleForm.content"
             :model="editor.model"
-          />
+          /> -->
+          <vditor v-model="ruleForm.content"></vditor>
         </v-col>
       </v-row>
     </v-sheet>
@@ -215,7 +216,9 @@
                       <v-icon>mdi-bookmark-multiple</v-icon>
                     </v-list-item-icon>
                     <v-list-item-content>
-                      <v-list-item-title v-text="item.typeName"></v-list-item-title>
+                      <v-list-item-title>
+                        {{item.typeName}}
+                      </v-list-item-title>
                     </v-list-item-content>
                     <v-list-item-action>
                       <v-btn icon @click="assignment(item, $event)">
@@ -296,10 +299,11 @@
 </template>
 
 <script>
-import mdEditor from '../components/VMdEditor/index.vue'
+import vditor from '../components/Vditor/edit.vue'
+// import mdEditor from '../components/VMdEditor/index.vue'
 export default {
   name: 'BlogEdit',
-  components: { mdEditor },
+  components: { vditor },
   data: () => ({
     ruleForm: {
       id: 0,
@@ -308,9 +312,6 @@ export default {
       content: '',
       selectType: {},
       original: null
-    },
-    editor: {
-      model: 'editable',
     },
     type:{
       id: null,
@@ -459,10 +460,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-::v-deep .v-subheader{
-  height: 70px;
-  font-size: 18px;
-  font-weight: 700;
-}
+  ::v-deep .v-subheader{
+    height: 70px;
+    font-size: 18px;
+    font-weight: 700;
+  }
 </style>

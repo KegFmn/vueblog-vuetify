@@ -7,7 +7,7 @@ import Message from './components/Message/index.js'
 axios.defaults.baseURL= '/api'
 
 // 远程
-// axios.defaults.baseURL= 'https://www.specialnn.top/api'
+// axios.defaults.baseURL= 'http://192.168.31.30/api'
 
 // 本地
 // axios.defaults.baseURL= 'http://localhost:8081'
