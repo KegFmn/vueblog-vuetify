@@ -284,8 +284,8 @@ export default {
     },
     searchWidth() {
       switch(this.$vuetify.breakpoint.name){
-        case 'xs': return 100
-        case 'sm': return 300
+        case 'xs': return 200
+        case 'sm': return 600
         case 'md': return 600
         case 'lg': return 600
       }
