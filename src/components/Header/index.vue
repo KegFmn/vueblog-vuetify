@@ -16,37 +16,35 @@
 
       <v-spacer></v-spacer>
 
-      <v-responsive max-width="600" height="40">
-        <div v-on:keyup.enter="search">
-          <v-menu offset-y rounded="xl">
-            <template v-slot:activator="{ on }">
-              <v-text-field
-                solo
-                dense
-                rounded
-                clearable
-                hide-details
-                solo-inverted
-                append-icon="mdi-magnify"
-                v-model="keyword"
-                class="input-search"
-                autocomplete="off"
-                v-on="on"
-                ref="search"
-                @click:append="search"
-                @click:clear="clearKeyword"
-              ></v-text-field>
-            </template>
-            <v-list v-show="items.length > 0" max-width="600" rounded>
-              <v-list-item v-for="(item, index) in items" :key="index" @click="itemClick(item)" two-line>
-                <v-list-item-content>
-                  <v-list-item-title>{{ item.title }}</v-list-item-title>
-                  <v-list-item-subtitle>{{ item.description }}</v-list-item-subtitle>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-menu>
-        </div>
+      <v-responsive :max-width="searchWidth" height="40" v-on:keyup.enter="search">
+        <v-menu offset-y rounded="xl" class="menu-search">
+          <template v-slot:activator="{ on }">
+            <v-text-field
+              solo
+              dense
+              rounded
+              clearable
+              hide-details
+              solo-inverted
+              append-icon="mdi-magnify"
+              v-model="keyword"
+              class="input-search"
+              autocomplete="off"
+              v-on="on"
+              ref="search"
+              @click:append="search"
+              @click:clear="clearKeyword"
+            ></v-text-field>
+          </template>
+          <v-list v-show="items.length > 0" :max-width="searchWidth" rounded>
+            <v-list-item v-for="(item, index) in items" :key="index" @click="itemClick(item)" two-line>
+              <v-list-item-content>
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+                <v-list-item-subtitle>{{ item.description }}</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-menu>
       </v-responsive>
 
       <v-row class="d-none d-lg-flex justify-end">
@@ -284,6 +282,14 @@ export default {
     monitor() {
       return this.$store.getters.getMonitor
     },
+    searchWidth() {
+      switch(this.$vuetify.breakpoint.name){
+        case 'xs': return 100
+        case 'sm': return 300
+        case 'md': return 600
+        case 'lg': return 600
+      }
+    }
   },
   watch: {
     keyword: 'inputHandle'
@@ -364,5 +370,8 @@ export default {
 <style lang="scss" scoped>
   .v-application--is-ltr .v-list-item__avatar:first-child{
     margin-right: 0px;
+  }
+  .menu-search{
+    width: 10px;
   }
 </style>

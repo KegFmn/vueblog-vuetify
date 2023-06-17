@@ -7,10 +7,11 @@
           <v-card
             link
             rounded="xl"
-            class="elevation-1"
+            min-height="200"
+            class="elevation-1 mx-auto"
             :to="{name:'BlogDetail', params: {blogId: blog.id}}"
           >
-            <v-card-title class="text-h5 text-no-wrap text-truncate mr-4 blog-title">
+            <v-card-title class="text-no-wrap text-truncate text-h5 mr-4 blog-title">
               {{blog.title}}
             </v-card-title>
 
@@ -18,7 +19,7 @@
               {{blog.updated}}
             </v-card-subtitle>
 
-            <v-card-text class="text-no-wrap text-truncate pb-0">
+            <v-card-text class="font-weight-bold">
               {{blog.description}}
             </v-card-text>
 
