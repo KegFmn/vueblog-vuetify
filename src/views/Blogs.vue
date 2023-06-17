@@ -79,7 +79,7 @@ export default {
     currentPage: 1,
     length: 0,
     total: 0,
-    pageSize: 5,
+    pageSize: 8,
   }),
   computed: {
     paginationLengthLimit() {
