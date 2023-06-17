@@ -7,16 +7,16 @@ let cdn = {
   css: [
     // vuetify
     'https://cdn.staticfile.org/vuetify/2.6.10/vuetify.min.css',
-    'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900',
-    'https://cdn.staticfile.org/MaterialDesign-Webfont/4.9.95/css/materialdesignicons.min.css',
+    // 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900',
+    // 'https://cdn.staticfile.org/MaterialDesign-Webfont/4.9.95/css/materialdesignicons.min.css',
     // gitalk
-    'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css'
+    // 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css'
   ],
   js: [
     // vue
     'https://cdn.bootcdn.net/ajax/libs/vue/2.7.10/vue.min.js',
     // axios
-    'https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.min.js',
+    // 'https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.min.js',
     // vuex
     'https://cdn.bootcdn.net/ajax/libs/vuex/3.6.2/vuex.min.js',
     // vue-router
@@ -24,11 +24,11 @@ let cdn = {
     // vutify
     'https://cdn.staticfile.org/vuetify/2.6.10/vuetify.min.js',
     // fingerprint2
-    'https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.4/fingerprint2.min.js',
+    // 'https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.4/fingerprint2.min.js',
     // vditor
     // 'https://unpkg.com/vditor@3.9.3',
     // gitalk
-    'https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.js'
+    // 'https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.js'
   ]
 }
 
@@ -43,6 +43,8 @@ module.exports = {
   productionSourceMap: false,
   // 关闭eslint
   lintOnSave: false,
+
+  transpileDependencies: ['vuetify'],
 
   devServer: {
     proxy: {
@@ -123,12 +125,12 @@ module.exports = {
       config.externals = {
         'vue': 'Vue',
         'vuex': 'Vuex',
-        'axios': 'axios',
+        // 'axios': 'axios',
         'vue-router': 'VueRouter',
         'vuetify': 'Vuetify',
-        'fingerprintjs2': 'Fingerprint2',
+        // 'fingerprintjs2': 'Fingerprint2',
         // 'vditor': 'Vditor',
-        'gitalk': 'Gitalk'
+        // 'gitalk': 'Gitalk'
       }
       
       plugins.push(
@@ -139,7 +141,7 @@ module.exports = {
               },
               compress: {
                 drop_console: true,
-                drop_debugger: false,
+                drop_debugger: true,
                 pure_funcs: ['console.log']//移除console
               },
               warnings: false
@@ -152,12 +154,11 @@ module.exports = {
       const gzipExtList = ['css', 'js'];
       plugins.push(
         new CompressionWebpackPlugin({
-            filename: "[path].gz[query]", // 默认值
-            algorithm: "gzip", // 默认值
-            test: new RegExp(`.(${gzipExtList.join('|')})$`),
-            threshold: 10240, // 只有体积大于 10KB 的资源会被处理（默认值为 0）
-            minRatio: 0.8, // 默认值，只有压缩率优于 0.8 的资源才会被处理（Compressed Size / Original Size）
-            deleteOriginalAssets: false // 是否删除原文件（默认值为 false）
+          filename: '[path][base].gz',
+          algorithm: 'gzip',
+          test: /\.js$|\.css$|\.html$/,
+          threshold: 10240,
+          minRatio: 0.8
         })
       )
     }

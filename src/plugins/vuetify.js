@@ -1,11 +1,12 @@
-import Vue from 'vue';
-import Vuetify from 'vuetify';
-import '@mdi/font/css/materialdesignicons.css'
+import Vue from 'vue'
+import Vuetify from 'vuetify/lib'
+import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
 
+Vuetify.config.silent = true
 Vue.use(Vuetify);
 
-
-export default new Vuetify({
+const opts = {
+  rtl: false,   // true 从右到左显示页面
   breakpoint: {
     thresholds: {
       xs: 340,
@@ -15,8 +16,10 @@ export default new Vuetify({
     },
     scrollBarWidth: 24,
   },
-  
   icons: {
-    iconfont: 'mdi', // 默认值 - 仅用于展示目的
-  },
-});
+    iconfont: 'mdi',
+    values: {},
+  }
+}
+
+export default new Vuetify(opts);

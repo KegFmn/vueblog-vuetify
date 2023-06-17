@@ -101,9 +101,9 @@
                 <v-col cols="6" class="ml-auto d-flex justify-end">
                   <v-btn icon @click="giveLike(blog.id)" :color="color" class="pt-1">
                     <v-icon>mdi-heart</v-icon>
+                    <span class="like">{{blog.likeNumber}}</span>
                   </v-btn>
-                  <span class="like">{{blog.likeNumber}}</span>
-                  <v-btn icon class="mr-2 pt-1" @click="copyLink(blog.id)">
+                  <v-btn icon class="mr-2 pt-1" @click="copyLink()">
                     <v-icon>mdi-share-variant</v-icon>
                   </v-btn>
                 </v-col>
@@ -148,7 +148,8 @@ export default{
     ownBlog: false,
     dialog: false,
     color: '',
-    likeFalse: true
+    likeFalse: true,
+    windowUrl : window.location.href
   }),
   mounted() {
     this.getBlog()
@@ -205,13 +206,16 @@ export default{
         this.getMonitor()
       })
     },
-    copyLink(val) {
-      const url = 'https://www.specialnn.top/#/blog/' + val
-      this.$copyText(url).then(() => {
+    copyLink() {
+        const domUrl = document.createElement("input");
+        domUrl.value = this.windowUrl;
+        domUrl.id = "creatDom";
+        document.body.appendChild(domUrl);
+        domUrl.select(); // 选择对象
+        document.execCommand("Copy"); // 执行浏览器复制命令
+        let creatDom = document.getElementById("creatDom");
+        creatDom.parentNode.removeChild(creatDom);
         this.$message.success("复制成功，快去分享给别人吧")
-      }).catch(err => {
-        this.$message.error("复制失败")
-      })
     },
     blogDele() {
       this.$axios.post('/blog/delete', this.blog).then(res =>{
@@ -231,19 +235,19 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-.my-text-1{
-  line-height: 30px;
-}
-.my-text-2{
-  line-height: 40px;
-}
-.v-note-wrapper{
-  border: none;
-  ::v-deep .v-note-panel .v-note-show .v-show-content{
-    padding: 8px 12px 10px 12px;
+  .my-text-1{
+    line-height: 30px;
   }
-}
-.like{
-  padding-top: 8px;
-}
+  .my-text-2{
+    line-height: 40px;
+  }
+  .v-note-wrapper{
+    border: none;
+    ::v-deep .v-note-panel .v-note-show .v-show-content{
+      padding: 8px 12px 10px 12px;
+    }
+  }
+  .like{
+    padding-bottom: 2px;
+  }
 </style>

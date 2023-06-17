@@ -14,11 +14,19 @@ Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 Vue.prototype.$message = Message
 
-Fingerprint2.get(function(components) {
-  const values = components.map(function(component,index) {
-    if (index === 0) { //把微信浏览器里UA的wifi或4G等网络替换成空,不然切换网络会ID不一样
-      return component.value.replace(/\bNetType\/\w+\b/, '')
-    }
+const options = {
+	fonts:{
+    extendedJsFonts:true
+  },
+	excludes:{
+		language: true,
+		colorDepth: true
+	}	
+}
+Fingerprint2.get({options},(components) => {
+  const values = components.map((component,index) => {
+    //把微信浏览器里UA的wifi或4G等网络替换成空,不然切换网络会ID不一样
+    if (index === 0) { return component.value.replace(/\bNetType\/\w+\b/, '')}
     return component.value
   })
   // 生成最终id murmur   

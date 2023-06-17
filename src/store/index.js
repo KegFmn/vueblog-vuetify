@@ -37,8 +37,6 @@ export default new Vuex.Store({
     },
     REMOVE_INFO: (state) => {
       state.token = ''
-      // state.blogType = []
-      // state.monitor = [] 
       state.userInfo = {}
       localStorage.removeItem('token')
       localStorage.removeItem('userInfo')
