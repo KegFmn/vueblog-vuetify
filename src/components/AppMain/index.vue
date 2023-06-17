@@ -148,7 +148,7 @@ export default {
         case 'xs': return 0
         case 'sm': return 0
         case 'md': return 0
-        case 'lg': return 0
+        case 'lg': return 2
         case 'xl': return 2
       }
     },
@@ -157,7 +157,7 @@ export default {
         case 'xs': return 12
         case 'sm': return 12
         case 'md': return 12
-        case 'lg': return 12
+        case 'lg': return 7
         case 'xl': return 7
       }
     },
@@ -166,7 +166,7 @@ export default {
         case 'xs': return 0
         case 'sm': return 0
         case 'md': return 0
-        case 'lg': return 0
+        case 'lg': return 2
         case 'xl': return 2
       }
     },
