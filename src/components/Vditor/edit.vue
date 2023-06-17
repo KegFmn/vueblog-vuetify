@@ -39,7 +39,7 @@ export default {
                 type: 'markdown'
             },
             preview: {
-                delay: 500,
+                delay: 250,
                 hljs: {
                     style: 'github',
                     lineNumber: true
