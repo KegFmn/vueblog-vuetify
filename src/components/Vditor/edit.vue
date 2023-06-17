@@ -13,6 +13,11 @@ export default {
             default: ''
         }
     },
+    watch: {
+        // value(val) {
+        //     this.contentEditor.setValue(val)
+        // }
+    },
     data() {
         return {
             contentEditor: {}
@@ -26,7 +31,7 @@ export default {
             const _this = this
             this.contentEditor = new Vditor('vditor', { 
             minHeight: 800,
-            icon: "ant",                               
+            icon: "material",                               
             placeholder: '此处为话题内容……',             
             theme: 'classic',
             counter: {
@@ -34,7 +39,7 @@ export default {
                 type: 'markdown'
             },
             preview: {
-                delay: 0,
+                delay: 500,
                 hljs: {
                     style: 'github',
                     lineNumber: true
@@ -53,6 +58,9 @@ export default {
             },
             cache: {
                 enable: false
+            },
+            after: () => {
+                this.contentEditor.setValue(this.value)
             },
             mode: 'sv',
             toolbar: [

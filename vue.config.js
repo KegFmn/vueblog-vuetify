@@ -10,7 +10,7 @@ let cdn = {
     // 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900',
     // 'https://cdn.staticfile.org/MaterialDesign-Webfont/4.9.95/css/materialdesignicons.min.css',
     // gitalk
-    // 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css'
+    'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css'
   ],
   js: [
     // vue
@@ -28,7 +28,7 @@ let cdn = {
     // vditor
     // 'https://unpkg.com/vditor@3.9.3',
     // gitalk
-    // 'https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.js'
+    'https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.js'
   ]
 }
 
@@ -130,7 +130,7 @@ module.exports = {
         'vuetify': 'Vuetify',
         // 'fingerprintjs2': 'Fingerprint2',
         // 'vditor': 'Vditor',
-        // 'gitalk': 'Gitalk'
+        'gitalk': 'Gitalk'
       }
       
       plugins.push(

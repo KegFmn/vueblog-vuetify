@@ -9,10 +9,14 @@ const opts = {
   rtl: false,   // true 从右到左显示页面
   breakpoint: {
     thresholds: {
-      xs: 340,
-      sm: 540,
-      md: 800,
-      lg: 1280,
+      // xs: 340,
+      // sm: 540,
+      // md: 800,
+      // lg: 1280,
+      xs: 600,
+      sm: 960,
+      md: 1280,
+      lg: 1920,
     },
     scrollBarWidth: 24,
   },

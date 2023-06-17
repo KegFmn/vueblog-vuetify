@@ -42,7 +42,7 @@
             v-model="ruleForm.content"
             :model="editor.model"
           /> -->
-          <vditor v-model="ruleForm.content"></vditor>
+          <vditor v-if="ruleForm.content != ''" v-model="ruleForm.content"></vditor>
         </v-col>
       </v-row>
     </v-sheet>
