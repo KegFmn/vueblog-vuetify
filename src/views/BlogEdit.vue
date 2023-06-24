@@ -42,7 +42,7 @@
             v-model="ruleForm.content"
             :model="editor.model"
           /> -->
-          <vditor v-if="ruleForm.content != ''" v-model="ruleForm.content"></vditor>
+          <vditor v-if="ruleForm.content != '' || (ruleForm.content == '' && this.$route.params.blogId == undefined)" v-model="ruleForm.content"></vditor>
         </v-col>
       </v-row>
     </v-sheet>
@@ -455,6 +455,8 @@ export default {
   },
   mounted() {
     this.getBlog()
+    console.log(this.ruleForm.content);
+    console.log(this.$route.params.blogId);
   }
 }
 </script>
