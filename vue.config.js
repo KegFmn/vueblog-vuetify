@@ -6,11 +6,9 @@ const isProd = process.env.NODE_ENV === 'production' // 是否生产环境
 let cdn = {
   css: [
     // vuetify
-    'https://cdn.staticfile.org/vuetify/2.6.10/vuetify.min.css',
-    // 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900',
-    // 'https://cdn.staticfile.org/MaterialDesign-Webfont/4.9.95/css/materialdesignicons.min.css',
+    // 'https://cdn.bootcdn.net/ajax/libs/vuetify/2.6.10/vuetify.min.css',
     // gitalk
-    'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css'
+    'https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.css'
   ],
   js: [
     // vue
@@ -22,7 +20,7 @@ let cdn = {
     // vue-router
     'https://cdn.bootcdn.net/ajax/libs/vue-router/3.6.5/vue-router.min.js',
     // vutify
-    'https://cdn.staticfile.org/vuetify/2.6.10/vuetify.min.js',
+    'https://cdn.bootcdn.net/ajax/libs/vuetify/2.6.10/vuetify.min.js',
     // fingerprint2
     // 'https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/2.1.4/fingerprint2.min.js',
     // vditor
